@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from qdrant_client import QdrantClient
 
 from langchain_aws import ChatBedrockConverse
-from langchain_core.prompts import ChatPromptTemplate, FewShotChatMessagePromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 
 load_dotenv()
 
@@ -41,43 +41,6 @@ RULES:
 ])
 
 # --- Strategy 2: Few-Shot Extraction (returns JSON) ---
-# These two examples teach the model the exact output schema before it sees the real query.
-_FEW_SHOT_EXAMPLES = [
-    {
-        "context": "[Source: Microsoft 2024 10-K]\nRevenue: $245.1 billion, an increase of 16% compared to fiscal year 2023.",
-        "query": "What was Microsoft's total revenue for fiscal year 2024?",
-        "answer": """{
-  "answer": "$245.1 billion",
-  "growth": "16% increase from fiscal year 2023",
-  "source_document": "Microsoft 2024 10-K",
-  "direct_quote": "Revenue: $245.1 billion, an increase of 16% compared to fiscal year 2023",
-  "confidence": "HIGH"
-}"""
-    },
-    {
-        "context": "[Source: Apple 2024 10-Q]\nOperating income was $29.6 billion for the third fiscal quarter of 2024, compared to $28.3 billion in the prior year quarter.",
-        "query": "What was Apple's operating income in Q3 2024?",
-        "answer": """{
-  "answer": "$29.6 billion",
-  "period": "Q3 Fiscal 2024",
-  "prior_year": "$28.3 billion",
-  "source_document": "Apple 2024 10-Q",
-  "direct_quote": "Operating income was $29.6 billion for the third fiscal quarter of 2024",
-  "confidence": "HIGH"
-}"""
-    }
-]
-
-_example_prompt = ChatPromptTemplate.from_messages([
-    ("human", "Context:\n{context}\n\nQuery: {query}"),
-    ("ai", "{answer}")
-])
-
-_few_shot_block = FewShotChatMessagePromptTemplate(
-    example_prompt=_example_prompt,
-    examples=_FEW_SHOT_EXAMPLES
-)
-
 EXTRACTION_PROMPT = ChatPromptTemplate.from_messages([
     ("system", """You are a financial data extraction engine. Your sole job is to extract a specific numerical or factual answer from the provided context and return it as valid JSON.
 
@@ -89,9 +52,45 @@ The JSON must follow this exact schema:
   "confidence": "HIGH | MEDIUM | LOW"
 }}
 
+# Examples
+
+<example id="1">
+<input>
+Query: What was Microsoft's total revenue for fiscal year 2024?
+Context: [Source: Microsoft 2024 10-K]
+Revenue: $245.1 billion, an increase of 16% compared to fiscal year 2023.
+</input>
+<assistant_response>
+{{
+  "answer": "$245.1 billion",
+  "growth": "16% increase from fiscal year 2023",
+  "source_document": "Microsoft 2024 10-K",
+  "direct_quote": "Revenue: $245.1 billion, an increase of 16% compared to fiscal year 2023",
+  "confidence": "HIGH"
+}}
+</assistant_response>
+</example>
+
+<example id="2">
+<input>
+Query: What was Apple's operating income in Q3 2024?
+Context: [Source: Apple 2024 10-Q]
+Operating income was $29.6 billion for the third fiscal quarter of 2024, compared to $28.3 billion in the prior year quarter.
+</input>
+<assistant_response>
+{{
+  "answer": "$29.6 billion",
+  "period": "Q3 Fiscal 2024",
+  "prior_year": "$28.3 billion",
+  "source_document": "Apple 2024 10-Q",
+  "direct_quote": "Operating income was $29.6 billion for the third fiscal quarter of 2024",
+  "confidence": "HIGH"
+}}
+</assistant_response>
+</example>
+
 If the figure cannot be found, return: {{"answer": null, "source_document": null, "direct_quote": null, "confidence": "LOW"}}
 Return ONLY the JSON object. No explanation, no preamble."""),
-    _few_shot_block,
     ("human", "Context:\n{context}\n\nQuery: {query}\n\nReturn ONLY valid JSON.")
 ])
 
@@ -131,6 +130,25 @@ def get_embedding(text: str) -> list:
     return json.loads(response.get('body').read())['embedding']
 
 
+def retrieve_chunks(user_query: str, top_k: int = 5) -> list[dict]:
+    """
+    Retrieves the top_k most relevant chunks from Qdrant for a given query.
+    Returns a list of chunk payloads (text, company, year, chunk_id) for evaluation use.
+
+    Used by Pratheek's Context Precision evaluation script to inspect which chunks
+    Qdrant returned before the LLM processes them.
+    """
+    query_vector = get_embedding(user_query)
+
+    search_results = qdrant.query_points(
+        collection_name="financial_reports",
+        query=query_vector,
+        limit=top_k
+    ).points
+
+    return [result.payload for result in search_results]
+
+
 def ask_financial_system(user_query: str, top_k: int = 5, strategy: str = "standard") -> str:
     """
     Core RAG wrapper. Retrieves context from Qdrant and generates a cited answer via LangChain.
@@ -144,21 +162,16 @@ def ask_financial_system(user_query: str, top_k: int = 5, strategy: str = "stand
                   "comparison" - Chain-of-Thought reasoning for cross-company or cross-period analysis.
     """
     print(f"[Strategy: {strategy}] Embedding query and fetching from Qdrant...")
-    query_vector = get_embedding(user_query)
 
     # 1. Retrieve the most relevant chunks
-    search_results = qdrant.query_points(
-        collection_name="financial_reports",
-        query=query_vector,
-        limit=top_k
-    ).points
+    chunks = retrieve_chunks(user_query, top_k)
 
     # 2. Assemble the context blocks with metadata citations
     context_blocks = []
-    for result in search_results:
-        text = result.payload.get("text", "")
-        company = result.payload.get("company", "Unknown")
-        year = result.payload.get("year", "Unknown")
+    for chunk in chunks:
+        text = chunk.get("text", "")
+        company = chunk.get("company", "Unknown")
+        year = chunk.get("year", "Unknown")
         context_blocks.append(f"[Source: {company} {year} 10-K]\n{text}")
 
     context_string = "\n\n---\n\n".join(context_blocks)
