@@ -1,0 +1,121 @@
+{
+  "summary": {
+    "questions_evaluated": 5,
+    "top_k": 5,
+    "strategy": "standard",
+    "judge_model": "zai.glm-5",
+    "judge_temperature": 0.0,
+    "judge_max_tokens": 1200,
+    "avg_final_score": 88.0,
+    "avg_factual_accuracy": 5.0,
+    "avg_citation_quality": 4.6,
+    "hallucination_rate": 0.0,
+    "judge_success_rate": 1.0,
+    "judge_repair_rate": 0.0,
+    "judge_failure_rate": 0.0
+  },
+  "rows": [
+    {
+      "id": "msft-2025-10k-021",
+      "question": "What were Microsoft's product revenue and service-and-other revenue in fiscal 2025, and which line item drove year-over-year growth?",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents. The context provides a revenue breakdown by specific product and service offerings (such as Server products and cloud services, Microsoft 365 Commercial, Gaming, etc.) [Source: Microsoft 2025 10-K p.119], and by business segment [Source: Microsoft 2025 10-K p.55], but it does not present a consolidated summary distinguishing between \"product revenue\" and \"service-and-other revenue\" categories.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 4,
+        "hallucination": false,
+        "missing_facts": [
+          "Product revenue was $63.946 billion in fiscal 2025.",
+          "Service and other revenue was $217.778 billion in fiscal 2025.",
+          "Product revenue was $64.773 billion in fiscal 2024.",
+          "Service and other revenue was $180.349 billion in fiscal 2024.",
+          "Growth was driven by service and other revenue rather than product revenue."
+        ],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 4,\n  \"hallucination\": false,\n  \"missing_facts\": [\n    \"Product revenue was $63.946 billion in fiscal 2025.\",\n    \"Service and other revenue was $217.778 billion in fiscal 2025.\",\n    \"Product revenue was $64.773 billion in fiscal 2024.\",\n    \"Service and other revenue was $180.349 billion in fiscal 2024.\",\n    \"Growth was driven by service and other revenue rather than product revenue.\"\n  ],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-022",
+      "question": "How did Microsoft describe the link between AI infrastructure scaling and gross margin performance in fiscal 2025?",
+      "strategy": "standard",
+      "model_answer": "Microsoft described the impact of AI infrastructure scaling on gross margin performance in fiscal 2025 as follows:\n\n**Microsoft Cloud Overall:**\nThe company reported that \"Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure\" [Source: Microsoft 2025 10-K p.54].\n\n**Intelligent Cloud Segment:**\nFor the Intelligent Cloud segment, Microsoft stated that \"Gross margin percentage decreased driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure\" [Source: Microsoft 2025 10-K p.57].\n\n**Productivity and Business Processes Segment:**\nFor the Productivity and Business Processes segment, the company noted that \"Gross margin percentage decreased slightly primarily driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Microsoft 365 Commercial cloud\" [Source: Microsoft 2025 10-K p.55].\n\n**Overall Gross Margin Trend:**\nAt the consolidated level, Microsoft reported that \"Gross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal Computing\" [Source: Microsoft 2025 10-K p.54].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-023",
+      "question": "What were Microsoft's net cash flows from operations, investing, and financing in fiscal 2025, and what does the combination imply about capital deployment?",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents. The context includes the Consolidated Statements of Operations (revenue, costs, operating income, net income) and segment results, but does not contain the Consolidated Statements of Cash Flows which would report net cash flows from operating, investing, and financing activities.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [
+          "Net cash from operations was $136.162 billion.",
+          "Net cash used in investing was $72.599 billion.",
+          "Net cash used in financing was $51.699 billion.",
+          "Operating cash inflow exceeded each outflow category individually.",
+          "The company simultaneously funded high investing outlays and financing distributions/repayments."
+        ],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [\n    \"Net cash from operations was $136.162 billion.\",\n    \"Net cash used in investing was $72.599 billion.\",\n    \"Net cash used in financing was $51.699 billion.\",\n    \"Operating cash inflow exceeded each outflow category individually.\",\n    \"The company simultaneously funded high investing outlays and financing distributions/repayments.\"\n  ],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-024",
+      "question": "How did Microsoft's debt and short-term borrowing profile change from June 30, 2024 to June 30, 2025?",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents. While the context mentions that interest expense decreased primarily due to \"maturities of commercial paper\" [Source: Microsoft 2025 10-K p.60], the documents do not contain the specific debt tables, notes on borrowings, or balance sheet details necessary to quantify changes in Microsoft's total debt or short-term borrowing profile between June 30, 2024, and June 30, 2025.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 4,
+        "hallucination": false,
+        "missing_facts": [
+          "Commercial paper was $0 at June 30, 2025.",
+          "Commercial paper was about $6.7 billion at June 30, 2024.",
+          "Short-term debt was 0 in 2025 versus $6.693 billion in 2024.",
+          "Long-term debt was $40.152 billion in 2025 versus $42.688 billion in 2024."
+        ],
+        "unsupported_claims": [],
+        "final_score": 40
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 4,\n  \"hallucination\": false,\n  \"missing_facts\": [\n    \"Commercial paper was $0 at June 30, 2025.\",\n    \"Commercial paper was about $6.7 billion at June 30, 2024.\",\n    \"Short-term debt was 0 in 2025 versus $6.693 billion in 2024.\",\n    \"Long-term debt was $40.152 billion in 2025 versus $42.688 billion in 2024.\"\n  ],\n  \"unsupported_claims\": [],\n  \"final_score\": 40\n}"
+    },
+    {
+      "id": "msft-2025-10k-025",
+      "question": "Summarize Microsoft's statement on cybersecurity strategy and incident response governance in fiscal 2025.",
+      "strategy": "standard",
+      "model_answer": "Based on the provided documents, Microsoft's cybersecurity strategy and incident response governance in fiscal 2025 can be summarized as follows:\n\n**Cybersecurity Strategy and Risk Management**\nMicrosoft established the Secure Future Initiative (SFI) in November 2023 and expanded its scope in May 2024, focusing on three security principles: \"Secure by Design,\" \"Secure by Default,\" and \"Secure Operations\" [Source: Microsoft 2025 10-K p.44]. The company operates a cybersecurity program aligned with the National Institute of Standards & Technology's Cyber Security Framework (NIST CSF) and utilizes a Security Development Lifecycle (SDL) to integrate security into products through a \"zero-trust end-to-end architecture\" [Source: Microsoft 2025 10-K p.44]. To combat threats, Microsoft leverages machine learning and AI-powered security tools to analyze 84 trillion signals per day and tracks over 1,500 unique threat actors, including more than 600 nation-state actors [Source: Microsoft 2025 10-K p.44]. The company also operates a Cyber Defense Operations Center connected to over 10,000 security and threat intelligence experts [Source: Microsoft 2025 10-K p.44].\n\n**Incident Response**\nMicrosoft utilizes established incident response plans that operate at both the company and product/services levels [Source: Microsoft 2025 10-K p.45]. Incidents are triaged for severity, assessed to establish a plan of record, and followed by internal and external notifications as applicable [Source: Microsoft 2025 10-K p.45]. Engineering resources are mobilized for remediation, and a comprehensive post-incident review is conducted after resolution [Source: Microsoft 2025 10-K p.45]. As of the filing date, Microsoft stated it did not believe risks from cybersecurity threats had materially affected or were reasonably likely to materially affect its results of operations or financial condition [Source: Microsoft 2025 10-K p.45].\n\n**Governance Structure**\nThe Board of Directors oversees cybersecurity risk, with reviews scheduled to occur at least quarterly [Source: Microsoft 2025 10-K p.45]. Presentations to the Board are made by senior management, including the Chief Information Security Officer (CISO), the EVP of Microsoft Security, and the EVP of Cloud + AI [Source: Microsoft 2025 10-K p.45]. The CISO leads the strategy, engineering, and operations of cybersecurity across the company and reports to the EVP of Cloud + AI [Source: Microsoft 2025 10-K p.45]. Additionally, a Cybersecurity Governance Council (CGC), comprised of Deputy CISOs, oversees initiatives to safeguard computing environments and approves enterprise security risk assessments [Source: Microsoft 2025 10-K p.45].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    }
+  ]
+}

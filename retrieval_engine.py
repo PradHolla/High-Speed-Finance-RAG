@@ -1,221 +1,242 @@
 import json
+import os
+from typing import Any
+
 import boto3
 from dotenv import load_dotenv
 from qdrant_client import QdrantClient
+from qdrant_client.models import FieldCondition, Filter, MatchValue
 
 from langchain_aws import ChatBedrockConverse
 from langchain_core.prompts import ChatPromptTemplate
 
 load_dotenv()
 
-# Initialize Backend Clients
-qdrant = QdrantClient("http://localhost:6333")
-bedrock_client = boto3.client(service_name='bedrock-runtime', region_name='us-east-1')
+qdrant = QdrantClient(os.getenv("QDRANT_URL", "http://localhost:6333"))
+bedrock_client = boto3.client(service_name="bedrock-runtime", region_name="us-east-1")
 
-# Initialize LangChain LLM
-# Swap this with whichever model you DO have access to (e.g., Llama 3, Amazon Nova, Mistral)
+chat_model_id = os.getenv("RAG_CHAT_MODEL", "zai.glm-5")
+embedding_model_id = os.getenv("RAG_EMBEDDING_MODEL", "amazon.titan-embed-text-v2:0")
+
 llm = ChatBedrockConverse(
     client=bedrock_client,
-    model="zai.glm-5",
+    model=chat_model_id,
     temperature=0.1,
     max_tokens=1000,
 )
 
-# ─────────────────────────────────────────────────────────────
-# PROMPT TEMPLATES
-# Three strategies selectable via the `strategy` param in ask_financial_system().
-#   "standard"   → Strict inline citations for general Q&A
-#   "extraction" → Few-Shot examples forcing structured JSON output
-#   "comparison" → Chain-of-Thought for multi-company / cross-period analysis
-# ─────────────────────────────────────────────────────────────
-
-# --- Strategy 1: Standard ---
 STANDARD_PROMPT = ChatPromptTemplate.from_messages([
-    ("system", """You are an expert equity researcher. Answer questions based ONLY on the provided context.
+    ("system", """You are an expert equity researcher. Answer questions based ONLY on provided context.
 
 RULES:
-1. Every factual claim must be followed immediately by its source in this exact format: [Source: Company Year 10-K/10-Q]
-2. Quote exact figures — never round, estimate, or infer.
-3. If the answer is not present in the context, respond with: "This information is not available in the provided documents." """),
-    ("human", "Context:\n{context}\n\nQuery: {query}")
+1. Every factual claim must be followed by an inline source citation.
+2. Use this exact format: [Source: Company Year FilingType p.X] or [Source: Company Year FilingType p.X-Y]
+3. Quote exact figures from context. Do not infer missing numbers.
+4. If context is insufficient, respond with: "This information is not available in the provided documents." """),
+    ("human", "Context:\n{context}\n\nQuery: {query}"),
 ])
 
-# --- Strategy 2: Few-Shot Extraction (returns JSON) ---
 EXTRACTION_PROMPT = ChatPromptTemplate.from_messages([
-    ("system", """You are a financial data extraction engine. Your sole job is to extract a specific numerical or factual answer from the provided context and return it as valid JSON.
-
-The JSON must follow this exact schema:
-{{
-  "answer": "<the direct answer>",
-  "source_document": "<Company Year 10-K or 10-Q>",
-  "direct_quote": "<verbatim sentence from the source>",
+    ("system", """You are a financial extraction engine. Return ONLY valid JSON using this exact schema:
+{
+  "answer": "<string or null>",
+  "source_document": "<string or null>",
+  "source_pages": "<array of integers or null>",
+  "direct_quote": "<string or null>",
   "confidence": "HIGH | MEDIUM | LOW"
-}}
+}
 
-# Examples
+If answer is not found, return:
+{"answer": null, "source_document": null, "source_pages": null, "direct_quote": null, "confidence": "LOW"}"""),
+    ("human", """Context:
+{context}
 
-<example id="1">
-<input>
-Query: What was Microsoft's total revenue for fiscal year 2024?
-Context: [Source: Microsoft 2024 10-K]
-Revenue: $245.1 billion, an increase of 16% compared to fiscal year 2023.
-</input>
-<assistant_response>
-{{
-  "answer": "$245.1 billion",
-  "growth": "16% increase from fiscal year 2023",
-  "source_document": "Microsoft 2024 10-K",
-  "direct_quote": "Revenue: $245.1 billion, an increase of 16% compared to fiscal year 2023",
-  "confidence": "HIGH"
-}}
-</assistant_response>
-</example>
+Query: {query}
 
-<example id="2">
-<input>
-Query: What was Apple's operating income in Q3 2024?
-Context: [Source: Apple 2024 10-Q]
-Operating income was $29.6 billion for the third fiscal quarter of 2024, compared to $28.3 billion in the prior year quarter.
-</input>
-<assistant_response>
-{{
-  "answer": "$29.6 billion",
-  "period": "Q3 Fiscal 2024",
-  "prior_year": "$28.3 billion",
-  "source_document": "Apple 2024 10-Q",
-  "direct_quote": "Operating income was $29.6 billion for the third fiscal quarter of 2024",
-  "confidence": "HIGH"
-}}
-</assistant_response>
-</example>
-
-If the figure cannot be found, return: {{"answer": null, "source_document": null, "direct_quote": null, "confidence": "LOW"}}
-Return ONLY the JSON object. No explanation, no preamble."""),
-    ("human", "Context:\n{context}\n\nQuery: {query}\n\nReturn ONLY valid JSON.")
+Example output:
+{"answer":"$281.724 billion","source_document":"Microsoft 2025 10-K","source_pages":[71],"direct_quote":"Total revenue 281,724","confidence":"HIGH"}"""),
 ])
 
-# --- Strategy 3: Chain-of-Thought Comparison ---
 COT_COMPARISON_PROMPT = ChatPromptTemplate.from_messages([
     ("system", """You are an expert equity researcher performing a structured comparative analysis.
 
-You MUST respond using this exact three-step format:
+Use this exact format:
+STEP 1 — EVIDENCE EXTRACTION
+STEP 2 — SIDE-BY-SIDE COMPARISON
+STEP 3 — SYNTHESIS & CONCLUSION
 
-STEP 1 — EVIDENCE EXTRACTION:
-List every relevant fact from the context for each company or time period. After each fact, write its source inline: [Source: Company Year 10-K/10-Q]
-
-STEP 2 — SIDE-BY-SIDE COMPARISON:
-Organize the extracted evidence into a clear comparison. Use a table or parallel bullet points.
-
-STEP 3 — SYNTHESIS & CONCLUSION:
-State your conclusion based solely on the evidence above. Cite each source inline.
-
-RULES:
-- Never invent data. If a document does not contain relevant information for one side of the comparison, write: "No information found in [Source] for this metric."
-- Every claim in Step 3 must have an inline citation."""),
-    ("human", "Context:\n{context}\n\nQuery: {query}")
+Rules:
+- Ground every claim in context.
+- Cite sources inline in Step 3.
+- If one side has no supporting data, explicitly say so."""),
+    ("human", "Context:\n{context}\n\nQuery: {query}"),
 ])
 
 
 def get_embedding(text: str) -> list:
-    """Generates a vector embedding using AWS Titan via Boto3."""
     payload = {"inputText": text, "dimensions": 1024, "normalize": True}
-    body_bytes = json.dumps(payload).encode('utf-8')
-
+    body_bytes = json.dumps(payload).encode("utf-8")
     response = bedrock_client.invoke_model(
-        modelId="amazon.titan-embed-text-v2:0",
+        modelId=embedding_model_id,
         contentType="application/json",
         accept="application/json",
-        body=body_bytes
+        body=body_bytes,
     )
-    return json.loads(response.get('body').read())['embedding']
+    return json.loads(response.get("body").read())["embedding"]
 
 
-def retrieve_chunks(user_query: str, top_k: int = 5) -> list[dict]:
-    """
-    Retrieves the top_k most relevant chunks from Qdrant for a given query.
-    Returns a list of chunk payloads (text, company, year, chunk_id) for evaluation use.
+def _build_query_filter(filters: dict[str, Any] | None) -> Filter | None:
+    if not filters:
+        return None
 
-    Used by Pratheek's Context Precision evaluation script to inspect which chunks
-    Qdrant returned before the LLM processes them.
-    """
+    conditions = []
+    if filters.get("company"):
+        conditions.append(FieldCondition(key="company", match=MatchValue(value=filters["company"])))
+    if filters.get("filing_year"):
+        value = str(filters["filing_year"])
+        conditions.append(FieldCondition(key="filing_year", match=MatchValue(value=value)))
+    if filters.get("filing_type"):
+        conditions.append(FieldCondition(key="filing_type", match=MatchValue(value=filters["filing_type"])))
+
+    if not conditions:
+        return None
+    return Filter(must=conditions)
+
+
+def _format_pages(page_numbers: list[int]) -> str:
+    if not page_numbers:
+        return "p.?"
+    if len(page_numbers) == 1:
+        return f"p.{page_numbers[0]}"
+    return f"p.{page_numbers[0]}-{page_numbers[-1]}"
+
+
+def retrieve_chunks(
+    user_query: str,
+    top_k: int = 5,
+    filters: dict[str, Any] | None = None,
+    collection_name: str = "financial_reports",
+) -> list[dict]:
     query_vector = get_embedding(user_query)
+    query_filter = _build_query_filter(filters)
 
     search_results = qdrant.query_points(
-        collection_name="financial_reports",
+        collection_name=collection_name,
         query=query_vector,
-        limit=top_k
+        limit=top_k,
+        query_filter=query_filter,
     ).points
 
-    return [result.payload for result in search_results]
+    rows: list[dict] = []
+    for rank, result in enumerate(search_results, start=1):
+        payload = result.payload or {}
+        rows.append(
+            {
+                "rank": rank,
+                "score": result.score,
+                "id": str(result.id),
+                "chunk_id": payload.get("chunk_id"),
+                "text": payload.get("text", ""),
+                "company": payload.get("company", "Unknown"),
+                "filing_year": str(payload.get("filing_year", payload.get("year", "Unknown"))),
+                "filing_type": payload.get("filing_type", "10-K"),
+                "source_file": payload.get("source_file"),
+                "page_numbers": payload.get("page_numbers", []),
+                "page_start": payload.get("page_start"),
+                "page_end": payload.get("page_end"),
+            }
+        )
+    return rows
 
 
-def ask_financial_system(user_query: str, top_k: int = 5, strategy: str = "standard") -> str:
-    """
-    Core RAG wrapper. Retrieves context from Qdrant and generates a cited answer via LangChain.
+def _select_prompt(strategy: str) -> ChatPromptTemplate:
+    if strategy == "extraction":
+        return EXTRACTION_PROMPT
+    if strategy == "comparison":
+        return COT_COMPARISON_PROMPT
+    return STANDARD_PROMPT
 
-    Args:
-        user_query: The natural language question to answer.
-        top_k: Number of context chunks to retrieve from Qdrant.
-        strategy: Prompting strategy to use.
-                  "standard"   - General Q&A with strict inline citations.
-                  "extraction" - Returns a structured JSON object with the exact figure and source.
-                  "comparison" - Chain-of-Thought reasoning for cross-company or cross-period analysis.
-    """
-    print(f"[Strategy: {strategy}] Embedding query and fetching from Qdrant...")
 
-    # 1. Retrieve the most relevant chunks
-    chunks = retrieve_chunks(user_query, top_k)
-
-    # 2. Assemble the context blocks with metadata citations
+def _build_context_string(chunks: list[dict]) -> str:
     context_blocks = []
     for chunk in chunks:
-        text = chunk.get("text", "")
-        company = chunk.get("company", "Unknown")
-        year = chunk.get("year", "Unknown")
-        context_blocks.append(f"[Source: {company} {year} 10-K]\n{text}")
+        pages = _format_pages(chunk.get("page_numbers", []))
+        source = (
+            f"[Source: {chunk.get('company', 'Unknown')} "
+            f"{chunk.get('filing_year', 'Unknown')} "
+            f"{chunk.get('filing_type', '10-K')} {pages}]"
+        )
+        context_blocks.append(f"{source}\n{chunk.get('text', '')}")
+    return "\n\n---\n\n".join(context_blocks)
 
-    context_string = "\n\n---\n\n".join(context_blocks)
 
-    # 3. Select prompt strategy
-    if strategy == "extraction":
-        prompt = EXTRACTION_PROMPT
-    elif strategy == "comparison":
-        prompt = COT_COMPARISON_PROMPT
-    else:
-        prompt = STANDARD_PROMPT
+def _validate_extraction_output(text: str) -> str:
+    required_keys = {"answer", "source_document", "source_pages", "direct_quote", "confidence"}
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Extraction strategy did not return valid JSON: {exc}") from exc
 
-    # 4. Chain execution
+    if not isinstance(parsed, dict):
+        raise ValueError("Extraction output must be a JSON object.")
+    if set(parsed.keys()) != required_keys:
+        raise ValueError(f"Extraction JSON keys must match exactly: {sorted(required_keys)}")
+    if parsed["confidence"] not in {"HIGH", "MEDIUM", "LOW"}:
+        raise ValueError("Extraction JSON confidence must be HIGH, MEDIUM, or LOW.")
+    if parsed["source_pages"] is not None:
+        if not isinstance(parsed["source_pages"], list) or not all(isinstance(x, int) for x in parsed["source_pages"]):
+            raise ValueError("Extraction JSON source_pages must be null or a list of integers.")
+
+    return json.dumps(parsed, ensure_ascii=True)
+
+
+def generate_from_chunks(chunks: list[dict], user_query: str, strategy: str = "standard") -> str:
+    if not chunks:
+        return "This information is not available in the provided documents."
+
+    context_string = _build_context_string(chunks)
+    prompt = _select_prompt(strategy)
     chain = prompt | llm
 
     print("Generating response via Bedrock Converse...")
+    response = chain.invoke({"context": context_string, "query": user_query})
+    text_response = response.content if isinstance(response.content, str) else str(response.content)
+    if strategy == "extraction":
+        return _validate_extraction_output(text_response)
+    return text_response
+
+
+def ask_financial_system(
+    user_query: str,
+    top_k: int = 5,
+    strategy: str = "standard",
+    filters: dict[str, Any] | None = None,
+    collection_name: str = "financial_reports",
+) -> str:
+    print(f"[Strategy: {strategy}] Embedding query and fetching from Qdrant...")
+
+    chunks = retrieve_chunks(
+        user_query=user_query,
+        top_k=top_k,
+        filters=filters,
+        collection_name=collection_name,
+    )
+    if not chunks:
+        return "This information is not available in the provided documents."
+
+    print("Generating response via Bedrock Converse...")
     try:
-        response = chain.invoke({
-            "context": context_string,
-            "query": user_query
-        })
-        return response.content
-    except Exception as e:
-        return f"API Error during generation: {e}"
+        return generate_from_chunks(chunks=chunks, user_query=user_query, strategy=strategy)
+    except Exception as exc:
+        return f"API Error during generation: {exc}"
 
 
 if __name__ == "__main__":
-    # --- Test 1: Standard — general risk question with inline citations ---
     print("\n=== STANDARD: General Q&A ===")
-    print(ask_financial_system(
-        "What are the primary macroeconomic risks mentioned?",
-        strategy="standard"
-    ))
+    print(ask_financial_system("What are the primary macroeconomic risks mentioned?", strategy="standard"))
 
-    # --- Test 2: Extraction — forces a JSON response with exact figure + source ---
     print("\n=== EXTRACTION: Structured JSON Output ===")
-    print(ask_financial_system(
-        "What was the total revenue reported?",
-        strategy="extraction"
-    ))
+    print(ask_financial_system("What was the total revenue reported?", strategy="extraction"))
 
-    # --- Test 3: Comparison — triggers Chain-of-Thought Step 1 / Step 2 / Step 3 format ---
     print("\n=== COMPARISON: Chain-of-Thought Analysis ===")
-    print(ask_financial_system(
-        "Compare the risk factors described across different sections of this filing.",
-        strategy="comparison"
-    ))
+    print(ask_financial_system("Compare risk factors and key financial growth drivers.", strategy="comparison"))

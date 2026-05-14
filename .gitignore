@@ -10,3 +10,7 @@ wheels/
 .venv
 qdrant_storage/
 .env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/

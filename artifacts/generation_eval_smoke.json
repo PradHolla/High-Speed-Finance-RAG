@@ -1,0 +1,36 @@
+{
+  "summary": {
+    "questions_evaluated": 1,
+    "top_k": 5,
+    "strategy": "standard",
+    "judge_model": "zai.glm-5",
+    "judge_temperature": 0.0,
+    "judge_max_tokens": 1200,
+    "avg_final_score": 100.0,
+    "avg_factual_accuracy": 5.0,
+    "avg_citation_quality": 5.0,
+    "hallucination_rate": 0.0,
+    "judge_success_rate": 1.0,
+    "judge_repair_rate": 0.0,
+    "judge_failure_rate": 0.0
+  },
+  "rows": [
+    {
+      "id": "msft-2025-10k-001",
+      "question": "What were Microsoft's total revenue, gross margin, operating income, net income, and diluted EPS in fiscal 2025, and how did each compare with fiscal 2024?",
+      "strategy": "standard",
+      "model_answer": "Based on the Summary Results of Operations for fiscal year 2025 compared with fiscal year 2024, Microsoft's financial performance was as follows:\n\n**Revenue**\n*   **Fiscal 2025:** $281,724 million\n*   **Fiscal 2024:** $245,122 million\n*   **Comparison:** Revenue increased $36.6 billion, or 15% [Source: Microsoft 2025 10-K p.54].\n\n**Gross Margin**\n*   **Fiscal 2025:** $193,893 million\n*   **Fiscal 2024:** $171,008 million\n*   **Comparison:** Gross margin increased $22.9 billion, or 13% [Source: Microsoft 2025 10-K p.54].\n\n**Operating Income**\n*   **Fiscal 2025:** $128,528 million\n*   **Fiscal 2024:** $109,433 million\n*   **Comparison:** Operating income increased $19.1 billion, or 17% [Source: Microsoft 2025 10-K p.54].\n\n**Net Income**\n*   **Fiscal 2025:** $101,832 million\n*   **Fiscal 2024:** $88,136 million\n*   **Comparison:** Net income increased 16% [Source: Microsoft 2025 10-K p.54].\n\n**Diluted Earnings Per Share (EPS)**\n*   **Fiscal 2025:** $13.64\n*   **Fiscal 2024:** $11.80\n*   **Comparison:** Diluted EPS increased 16% [Source: Microsoft 2025 10-K p.54].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "```json\n{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}\n```"
+    }
+  ]
+}

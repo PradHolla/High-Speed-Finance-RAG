@@ -1,0 +1,228 @@
+:root {
+  color: #0f172a;
+  background: linear-gradient(120deg, #f2f8ff, #f7f9fc 42%, #eefaf0);
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.app-shell {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 24px 16px 40px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.app-header p {
+  margin: 8px 0 0;
+  color: #334155;
+}
+
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.card,
+.chat-card {
+  background: #ffffffee;
+  border: 1px solid #d7e2ea;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.92rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  margin-top: 4px;
+  border: 1px solid #bfd0dc;
+  border-radius: 6px;
+  padding: 9px 10px;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.row {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.row label:has(select),
+.row label:has(input[type="number"]) {
+  grid-column: span 1;
+}
+
+button {
+  border: 0;
+  border-radius: 6px;
+  background: #0b6fbe;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status-line {
+  margin: 10px 0 0;
+  color: #065f46;
+}
+
+.helper-line {
+  margin: 8px 0 12px;
+  color: #475569;
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.error-line {
+  margin: 10px 0 0;
+  color: #b91c1c;
+}
+
+.chat-card {
+  margin-top: 16px;
+}
+
+.chat-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.empty-line {
+  color: #64748b;
+}
+
+.message {
+  border-radius: 6px;
+  padding: 12px;
+  border: 1px solid #d8e4ec;
+}
+
+.message-user {
+  background: #f3f9ff;
+}
+
+.message-assistant {
+  background: #f8fffa;
+}
+
+.message-role {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #475569;
+}
+
+.message-content {
+  margin: 6px 0 0;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.answer-line {
+  margin: 6px 0;
+}
+
+.answer-bullet {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.bullet-dot {
+  color: #0b6fbe;
+  font-weight: 700;
+}
+
+.evidence-block {
+  margin-top: 10px;
+}
+
+.link-button {
+  background: #e6f0f8;
+  color: #0b6fbe;
+  padding: 6px 10px;
+}
+
+.evidence-list {
+  margin-top: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+.evidence-summary {
+  margin: 0 0 4px;
+  color: #475569;
+  font-size: 0.84rem;
+}
+
+.evidence-item {
+  border: 1px solid #d6e3eb;
+  border-radius: 6px;
+  background: #fff;
+  padding: 8px;
+}
+
+.evidence-item p {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.evidence-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: #475569;
+}
+
+.meta-pill {
+  background: #e8f0f7;
+  border: 1px solid #d2dee8;
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+
+@media (max-width: 760px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

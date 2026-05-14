@@ -1,0 +1,497 @@
+{
+  "summary": {
+    "questions_evaluated": 25,
+    "top_k": 5,
+    "strategy": "standard",
+    "judge_model": "zai.glm-5",
+    "judge_temperature": 0.0,
+    "judge_max_tokens": 1200,
+    "avg_final_score": 91.6,
+    "avg_factual_accuracy": 4.76,
+    "avg_citation_quality": 4.8,
+    "hallucination_rate": 0.04,
+    "judge_success_rate": 1.0,
+    "judge_repair_rate": 0.0,
+    "judge_failure_rate": 0.0
+  },
+  "rows": [
+    {
+      "id": "msft-2025-10k-021",
+      "question": "What were Microsoft's product revenue and service-and-other revenue in fiscal 2025, and which line item drove year-over-year growth?",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents.\n\nThe provided context presents revenue classified by \"significant product and service offerings\" (such as Server products and cloud services, Microsoft 365 Commercial products and cloud services, Gaming, etc.) rather than a consolidated \"product revenue\" versus \"service and other revenue\" breakdown [Source: Microsoft 2025 10-K p.119]. While the documents detail specific growth drivers for each segment and product line, they do not report figures for aggregate \"product revenue\" or \"service-and-other revenue\" categories.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [
+          "Product revenue was $63.946 billion in fiscal 2025.",
+          "Service and other revenue was $217.778 billion in fiscal 2025.",
+          "Product revenue was $64.773 billion in fiscal 2024.",
+          "Service and other revenue was $180.349 billion in fiscal 2024.",
+          "Growth was driven by service and other revenue rather than product revenue."
+        ],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [\n    \"Product revenue was $63.946 billion in fiscal 2025.\",\n    \"Service and other revenue was $217.778 billion in fiscal 2025.\",\n    \"Product revenue was $64.773 billion in fiscal 2024.\",\n    \"Service and other revenue was $180.349 billion in fiscal 2024.\",\n    \"Growth was driven by service and other revenue rather than product revenue.\"\n  ],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-022",
+      "question": "How did Microsoft describe the link between AI infrastructure scaling and gross margin performance in fiscal 2025?",
+      "strategy": "standard",
+      "model_answer": "Microsoft described the link between AI infrastructure scaling and gross margin performance as a negative pressure that was partially offset by efficiency gains. Specifically:\n\n**Company-wide Microsoft Cloud:**\nMicrosoft stated that the \"Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure\" [Source: Microsoft 2025 10-K p.54].\n\n**Intelligent Cloud Segment:**\nThe company reported that \"Gross margin percentage decreased driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure\" [Source: Microsoft 2025 10-K p.57].\n\n**Productivity and Business Processes Segment:**\nMicrosoft noted that \"Gross margin percentage decreased slightly primarily driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Microsoft 365 Commercial cloud\" [Source: Microsoft 2025 10-K p.55].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-023",
+      "question": "What were Microsoft's net cash flows from operations, investing, and financing in fiscal 2025, and what does the combination imply about capital deployment?",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents. The context includes the Consolidated Statements of Operations (p.54), Segment Results (p.55), Income Taxes (p.60), and Revenue breakdown by product (p.119), but does not contain the Consolidated Statements of Cash Flows which would report the net cash flows from operating, investing, and financing activities.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [
+          "Net cash from operations was $136.162 billion.",
+          "Net cash used in investing was $72.599 billion.",
+          "Net cash used in financing was $51.699 billion.",
+          "Operating cash inflow exceeded each outflow category individually.",
+          "The company simultaneously funded high investing outlays and financing distributions/repayments."
+        ],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [\n    \"Net cash from operations was $136.162 billion.\",\n    \"Net cash used in investing was $72.599 billion.\",\n    \"Net cash used in financing was $51.699 billion.\",\n    \"Operating cash inflow exceeded each outflow category individually.\",\n    \"The company simultaneously funded high investing outlays and financing distributions/repayments.\"\n  ],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-024",
+      "question": "How did Microsoft's debt and short-term borrowing profile change from June 30, 2024 to June 30, 2025?",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents.\n\nThe provided context contains detailed information on leases (operating and finance lease liabilities, right-of-use assets, lease expenses, and future lease payment maturities) [Source: Microsoft 2025 10-K p.107-108], as well as a discussion of interest expense which mentions \"maturities of commercial paper\" [Source: Microsoft 2025 10-K p.60]. However, the documents do not contain a breakdown of Microsoft's total debt portfolio, short-term borrowings, or specific debt balances for the periods ending June 30, 2024, and June 30, 2025.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [
+          "Commercial paper was $0 at June 30, 2025.",
+          "Commercial paper was about $6.7 billion at June 30, 2024.",
+          "Short-term debt was 0 in 2025 versus $6.693 billion in 2024.",
+          "Long-term debt was $40.152 billion in 2025 versus $42.688 billion in 2024."
+        ],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [\n    \"Commercial paper was $0 at June 30, 2025.\",\n    \"Commercial paper was about $6.7 billion at June 30, 2024.\",\n    \"Short-term debt was 0 in 2025 versus $6.693 billion in 2024.\",\n    \"Long-term debt was $40.152 billion in 2025 versus $42.688 billion in 2024.\"\n  ],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-025",
+      "question": "Summarize Microsoft's statement on cybersecurity strategy and incident response governance in fiscal 2025.",
+      "strategy": "standard",
+      "model_answer": "Based on the provided documents, Microsoft's cybersecurity strategy and incident response governance in fiscal 2025 can be summarized as follows:\n\n**Cybersecurity Strategy and Risk Management**\nMicrosoft established the Secure Future Initiative (\"SFI\") in November 2023 and expanded its scope in May 2024, focusing on three security principles: \"Secure by Design,\" \"Secure by Default,\" and \"Secure Operations\" [Source: Microsoft 2025 10-K p.44]. The company operates a cybersecurity program aligned with the National Institute of Standards & Technology\u2019s Cyber Security Framework (\"NIST\") and utilizes a Security Development Lifecycle (\"SDL\") that incorporates zero-trust architecture [Source: Microsoft 2025 10-K p.44].\n\nTo combat threats, Microsoft leverages machine learning and AI-powered security tools to analyze 84 trillion signals per day and tracks over 1,500 unique threat actors, including more than 600 nation-state actors [Source: Microsoft 2025 10-K p.44]. The company operates a Cyber Defense Operations Center staffed by over 10,000 security and threat intelligence experts [Source: Microsoft 2025 10-K p.44]. As of the filing date, Microsoft stated it did not believe risks from cybersecurity threats had materially affected or were reasonably likely to materially affect its results of operations or financial condition [Source: Microsoft 2025 10-K p.45].\n\n**Incident Response Governance**\nThe Board of Directors oversees cybersecurity risk, with reviews scheduled to occur at least quarterly [Source: Microsoft 2025 10-K p.45]. Presentations to the Board are made by senior management, including the Chief Information Security Officer (\"CISO\"), the EVP of Microsoft Security, and the EVP of Cloud + AI [Source: Microsoft 2025 10-K p.45]. The CISO, who reports to the EVP of Cloud + AI, leads the strategy, engineering, and operations of cybersecurity across the company [Source: Microsoft 2025 10-K p.45].\n\nA Cybersecurity Governance Council (\"CGC\"), comprised of executive-level Deputy CISOs, supports the CISO by overseeing initiatives to safeguard computing environments and approving enterprise security risk assessments [Source: Microsoft 2025 10-K p.45]. When cybersecurity incidents occur, Microsoft utilizes established response plans where incidents are triaged for severity, assessed for remediation, and followed by a comprehensive post-incident review [Source: Microsoft 2025 10-K p.45].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-026",
+      "question": "What were Microsoft's total contractual obligations at June 30, 2025 and which two categories were largest?",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents.\n\nWhile the provided context details Microsoft's lease obligations and remaining performance obligations, it does not contain a comprehensive \"Contractual Obligations\" table that would typically aggregate all categories (such as long-term debt, purchase obligations, etc.) to determine the total amount and ranking.\n\nThe documents provide the following specific data points, but these are not sufficient to answer the complete query:\n*   **Total lease payments** as of June 30, 2025, were **$86.0 billion** (comprising $25.5 billion for operating leases and $60.5 billion for finance leases) [Source: Microsoft 2025 10-K p.108].\n*   **Revenue allocated to remaining performance obligations** was **$375 billion** as of June 30, 2025 [Source: Microsoft 2025 10-K p.107].\n*   **Additional leases** that had not yet commenced totaled **$92.7 billion** [Source: Microsoft 2025 10-K p.108].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [
+          "Total contractual obligations were $397.045 billion.",
+          "Operating and finance leases were $178.701 billion.",
+          "Purchase commitments were $109.953 billion.",
+          "Those two categories were larger than debt interest, debt principal, and construction commitments."
+        ],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [\n    \"Total contractual obligations were $397.045 billion.\",\n    \"Operating and finance leases were $178.701 billion.\",\n    \"Purchase commitments were $109.953 billion.\",\n    \"Those two categories were larger than debt interest, debt principal, and construction commitments.\"\n  ],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-027",
+      "question": "How did Microsoft characterize major trade and export-control risks to its operations?",
+      "strategy": "standard",
+      "model_answer": "Microsoft characterized major trade and export-control risks to its operations across several key areas:\n\n**Regulatory and Sanctions Restrictions**\nThe company stated that economic sanctions from the U.S., EU, and other countries \"prohibit most business with restricted entities or countries\" [Source: Microsoft 2025 10-K p.37]. Additionally, U.S. export controls \"restrict Microsoft from offering many of its products and services to, or making investments in, certain entities in specified countries\" [Source: Microsoft 2025 10-K p.37].\n\n**Supply Chain and Import Controls**\nMicrosoft noted that U.S. import controls \"restrict us from integrating certain information and communication technologies into our supply chain and allow for government review of transactions involving information and communications technology from countries determined to be foreign adversaries\" [Source: Microsoft 2025 10-K p.37]. Supply chain regulations \"may impact the availability of goods or result in additional regulatory scrutiny\" [Source: Microsoft 2025 10-K p.37].\n\n**AI-Specific Export Controls**\nThe company highlighted risks from \"shifting AI export controls policies, like the AI Diffusion Rule,\" which \"could increase operational costs, create uncertainty in the continuity of our products, and accelerate sovereignty initiatives among international partners and customers\" [Source: Microsoft 2025 10-K p.37]. Microsoft further warned that \"the potential replacement of the recently rescinded AI Diffusion Rule and other potential AI-related rulemakings could adversely affect Microsoft's business, strategy, and operations\" [Source: Microsoft 2025 10-K p.37].\n\n**Tariffs and Geopolitical Instability**\nMicrosoft characterized the \"volatility of U.S. tariffs\" as having \"triggered economic uncertainty and could impact cloud and devices supply chain cost competitiveness\" [Source: Microsoft 2025 10-K p.37]. The company also noted that \"increased geopolitical instabilities and changing U.S. Administration priorities create an unpredictable trade landscape\" [Source: Microsoft 2025 10-K p.37].\n\n**Armed Conflicts**\nMicrosoft identified that \"periods of intense diplomatic or armed conflict like the ongoing conflict in Ukraine and the Israel-Hamas conflict could result in (1) new and rapidly evolving sanctions and trade restrictions, which may impair trade with sanctioned individuals and countries, and (2) negative impacts to regional trade ecosystems among our customers, partners, and us\" [Source: Microsoft 2025 10-K p.37].\n\n**Data Flow and Engineering Limitations**\nThe company noted that \"restrictions on data flows and outbound investment and customer sensitivities may limit our ability to leverage parts of our global engineering footprint to provide services in certain jurisdictions\" [Source: Microsoft 2025 10-K p.37].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-028",
+      "question": "Compare fiscal 2025 operating income across Microsoft's three reportable segments and identify the largest contributor.",
+      "strategy": "standard",
+      "model_answer": "Based on fiscal year 2025, Microsoft's operating income across its three reportable segments was as follows:\n\n| Segment | Operating Income (FY2025) |\n|---------|--------------------------|\n| Productivity and Business Processes | $69,773 million |\n| Intelligent Cloud | $44,589 million |\n| More Personal Computing | $14,166 million |\n\n**Productivity and Business Processes** is the largest contributor to operating income, generating $69,773 million [Source: Microsoft 2025 10-K p.118]. This segment outperformed Intelligent Cloud ($44,589 million) by approximately $25.2 billion and More Personal Computing ($14,166 million) by approximately $55.6 billion [Source: Microsoft 2025 10-K p.118].\n\nCollectively, the three segments generated total operating income of $128,528 million in fiscal year 2025 [Source: Microsoft 2025 10-K p.118].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "```json\n{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}\n```"
+    },
+    {
+      "id": "msft-2025-10k-029",
+      "question": "What market-risk sensitivity category produced the largest modeled impact in 2025, and how did it compare to interest-rate sensitivity?",
+      "strategy": "standard",
+      "model_answer": "Based on the sensitivity analysis provided in the 10-K, **Foreign currency \u2013 Revenue** produced the largest modeled impact in 2025, with a hypothetical loss of **$11,596 million** in earnings resulting from a 10% decrease in foreign exchange rates [Source: Microsoft 2025 10-K p.70].\n\nThis impact was significantly larger than the **Interest rate** sensitivity, which showed a hypothetical loss of **$1,415 million** in fair value resulting from a 100 basis point increase in U.S. treasury interest rates [Source: Microsoft 2025 10-K p.70]. The modeled foreign currency revenue impact was approximately 8.2 times larger than the interest rate impact.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-030",
+      "question": "What did Microsoft disclose about workforce scale and functional mix, and why is that relevant to execution risk?",
+      "strategy": "standard",
+      "model_answer": "**Workforce Scale and Functional Mix**\n\nAs of June 30, 2025, Microsoft employed approximately 228,000 people on a full-time basis, with 125,000 located in the U.S. and 103,000 internationally [Source: Microsoft 2025 10-K p.14].\n\nThe functional breakdown of this workforce is as follows [Source: Microsoft 2025 10-K p.14]:\n*   **Operations:** 89,000 employees (including product support and consulting services, datacenter operations, and manufacturing and distribution)\n*   **Product Research and Development:** 80,000 employees\n*   **Sales and Marketing:** 44,000 employees\n*   **General and Administration:** 15,000 employees\n\n**Relevance to Execution Risk**\n\nThe composition and scale of the workforce are relevant to execution risk in several key areas:\n\n1.  **Talent Acquisition and Retention:** The company explicitly states that its success is \"highly dependent on our ability to attract and retain qualified employees\" and that it competes for talent globally [Source: Microsoft 2025 10-K p.51]. Failure to maintain this workforce could impede operations.\n\n2.  **Datacenter and AI Infrastructure Expansion:** The large operations workforce (89,000) supports critical infrastructure. The company notes that meeting growing demand for AI services requires datacenters that depend on the availability of permitted land, predictable energy, networking supplies, and servers including GPUs [Source: Microsoft 2025 10-K p.16]. Execution risk arises from the need to align datacenter locations and server capacity with evolving customer needs [Source: Microsoft 2025 10-K p.16].\n\n3.  **Supply Chain Concentration:** The operations function faces execution risks related to manufacturing. There are \"few qualified suppliers for certain components\" of servers and devices, meaning extended or unforeseen disruptions at these suppliers could impact the ability to operate datacenters and manufacture devices on time [Source: Microsoft 2025 10-K p.16].\n\n4.  **Innovation and R&D:** With 80,000 employees in research and development, the company's competitive position relies on significant investments in new products and technologies [Source: Microsoft 2025 10-K p.16]. The company states that if it does not \"continue to innovate and provide products, devices, and services that appeal to businesses and consumers,\" it may not remain competitive [Source: Microsoft 2025 10-K p.23].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-031",
+      "question": "Synthesize Microsoft's fiscal 2025 growth profile across total company results and segment-level drivers.",
+      "strategy": "standard",
+      "model_answer": "Based on the provided documents, Microsoft's fiscal year 2025 growth profile reflects strong performance at both the total company and segment levels, driven primarily by cloud and AI investments.\n\n**Total Company Results**\nMicrosoft delivered double-digit growth across all key financial metrics in fiscal 2025. Total revenue increased 15% to **$281,724 million** from $245,122 million in fiscal 2024 [Source: Microsoft 2025 10-K p.54]. Operating income grew 17% to **$128,528 million** [Source: Microsoft 2025 10-K p.54-55], while net income increased 16% to **$101,832 million** [Source: Microsoft 2025 10-K p.54]. Diluted earnings per share rose 16% to **$13.64** [Source: Microsoft 2025 10-K p.54].\n\nHowever, gross margin percentage decreased slightly, driven by the Intelligent Cloud segment, though this was partially offset by More Personal Computing [Source: Microsoft 2025 10-K p.54]. Specifically, Microsoft Cloud gross margin percentage decreased to **69%**, attributed to the impact of scaling AI infrastructure, offset in part by efficiency gains in Azure [Source: Microsoft 2025 10-K p.54]. Overall cost of revenue increased 19% to **$87,831 million**, driven by growth in Microsoft Cloud [Source: Microsoft 2025 10-K p.54-55].\n\n**Segment-Level Drivers**\n\n*   **Intelligent Cloud:** This segment achieved revenue of **$106,265 million**, a 21% increase, making it the fastest-growing segment by percentage [Source: Microsoft 2025 10-K p.55]. Operating income rose 18% to **$44,589 million** [Source: Microsoft 2025 10-K p.55]. The revenue increase was driven by Azure [Source: Microsoft 2025 10-K p.54]. However, cost of revenue increased significantly by 36% to **$40,171 million** [Source: Microsoft 2025 10-K p.55].\n\n*   **Productivity and Business Processes:** Revenue increased 13% to **$120,810 million**, making it the largest segment by revenue [Source: Microsoft 2025 10-K p.55]. Operating income grew 17% to **$69,773 million** [Source: Microsoft 2025 10-K p.55]. Key drivers included:\n    *   **Microsoft 365 Commercial:** Revenue increased $10.8 billion or 14%, with cloud revenue growing 15% driven by seat growth of 6% and revenue per user increases [Source: Microsoft 2025 10-K p.55].\n    *   **Microsoft 365 Consumer:** Revenue increased $756 million or 11%, with subscriber growth of 8% reaching **89.0 million** subscribers [Source: Microsoft 2025 10-K p.55].\n    *   **LinkedIn:** Revenue increased $1.4 billion or 9% [Source: Microsoft 2025 10-K p.55].\n    *   **Dynamics:** Revenue increased $996 million or 15%, with Dynamics 365 specifically growing 19% [Source: Microsoft 2025 10-K p.55].\n\n*   **More Personal Computing:** This segment reported the slowest revenue growth at 7%, reaching **$54,649 million** [Source: Microsoft 2025 10-K p.55]. Operating income increased 18% to **$14,166 million** [Source: Microsoft 2025 10-K p.55]. Revenue growth was driven by Gaming and Search and news advertising [Source: Microsoft 2025 10-K p.54]. Operating expenses increased 9% to **$15,245 million**, driven by investments in Gaming, including the impact of the Activision Blizzard acquisition [Source: Microsoft 2025 10-K p.54-55].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "```json\n{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}\n```"
+    },
+    {
+      "id": "msft-2025-10k-032",
+      "question": "How do Microsoft's shareholder-return actions compare with its investment intensity in fiscal 2025?",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents. The context contains data regarding Microsoft's fiscal year 2025 financial performance, stock-based compensation plans, and tax rates, but it does not disclose specific shareholder-return actions such as dividends per share (beyond assumptions used for stock award valuations [Source: Microsoft 2025 10-K p.113]) or share repurchase activity. Consequently, a comparison of shareholder returns against investment intensity cannot be made using only the provided text.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 4,
+        "hallucination": false,
+        "missing_facts": [
+          "Fiscal 2025 share repurchases were $13.0 billion for 31 million shares.",
+          "Fiscal 2025 dividends declared were $24.7 billion.",
+          "Additions to property and equipment were $64.551 billion in cash flows.",
+          "Both shareholder returns and capital investment were large in the same fiscal year."
+        ],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 4,\n  \"hallucination\": false,\n  \"missing_facts\": [\n    \"Fiscal 2025 share repurchases were $13.0 billion for 31 million shares.\",\n    \"Fiscal 2025 dividends declared were $24.7 billion.\",\n    \"Additions to property and equipment were $64.551 billion in cash flows.\",\n    \"Both shareholder returns and capital investment were large in the same fiscal year.\"\n  ],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-033",
+      "question": "Explain how Microsoft linked cloud growth to margin pressure in fiscal 2025.",
+      "strategy": "standard",
+      "model_answer": "Microsoft explicitly linked cloud growth to margin pressure through the impact of scaling its AI infrastructure, which offset efficiency gains across its cloud businesses in fiscal 2025.\n\n**Intelligent Cloud**\nIn the Intelligent Cloud segment, revenue increased $18.8 billion or 21%, driven by Azure and other cloud services revenue growth of 34% [Source: Microsoft 2025 10-K p.57]. However, cost of revenue increased $10.6 billion or 36% driven by growth in Azure [Source: Microsoft 2025 10-K p.57]. This led to a decrease in the gross margin percentage, which management attributed directly to \"the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure\" [Source: Microsoft 2025 10-K p.57].\n\n**Productivity and Business Processes**\nSimilarly, in the Productivity and Business Processes segment, revenue increased $14.0 billion or 13% [Source: Microsoft 2025 10-K p.55]. While cost of revenue increased $2.8 billion or 14% driven by growth in Microsoft 365 Commercial cloud, the gross margin percentage decreased slightly [Source: Microsoft 2025 10-K p.55]. Management explained this margin pressure was \"primarily driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Microsoft 365 Commercial cloud\" [Source: Microsoft 2025 10-K p.55].\n\n**Company-Wide Impact**\nAt the consolidated level, Microsoft Cloud gross margin percentage decreased to 69% [Source: Microsoft 2025 10-K p.54]. Management stated this decline was \"driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure\" [Source: Microsoft 2025 10-K p.54]. Overall gross margin percentage decreased slightly, driven specifically by the Intelligent Cloud segment [Source: Microsoft 2025 10-K p.54].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-034",
+      "question": "Assess the balance between U.S. and non-U.S. revenue in fiscal 2025 and its implication for concentration risk.",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents.\n\nThe context provides a breakdown of **income before income taxes** by geography, but does not provide a breakdown of **revenue**.\n\nAccording to the documents, in fiscal year 2025, Microsoft's U.S. income before income taxes was $69.2 billion and foreign income before income taxes was $54.4 billion [Source: Microsoft 2025 10-K p.60]. The documents also note that the geographic distribution of income impacts the effective tax rate due to customer demand for products and services [Source: Microsoft 2025 10-K p.60], but the specific revenue amounts or percentages for U.S. versus non-U.S. markets are not disclosed in the provided text.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 4,
+        "hallucination": false,
+        "missing_facts": [
+          "U.S. revenue was $144.546 billion.",
+          "Other-country revenue was $137.178 billion.",
+          "Total revenue was $281.724 billion.",
+          "No country other than the U.S. exceeded 10% of revenue."
+        ],
+        "unsupported_claims": [],
+        "final_score": 50
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 4,\n  \"hallucination\": false,\n  \"missing_facts\": [\n    \"U.S. revenue was $144.546 billion.\",\n    \"Other-country revenue was $137.178 billion.\",\n    \"Total revenue was $281.724 billion.\",\n    \"No country other than the U.S. exceeded 10% of revenue.\"\n  ],\n  \"unsupported_claims\": [],\n  \"final_score\": 50\n}"
+    },
+    {
+      "id": "msft-2025-10k-035",
+      "question": "How did Microsoft describe the interaction between geopolitical instability and supply-chain resilience?",
+      "strategy": "standard",
+      "model_answer": "Microsoft describes the interaction between geopolitical instability and supply-chain resilience across several dimensions:\n\n**Direct Supply Chain Disruptions**\nGeopolitical conditions, including armed conflicts such as the ongoing conflict in Ukraine and the Israel-Hamas conflict, may cause supply chain disruptions for hardware manufacturers [Source: Microsoft 2025 10-K p.42]. Periods of intense diplomatic or armed conflict could result in new and rapidly evolving sanctions and trade restrictions, which may impair trade with sanctioned individuals and countries, as well as negatively impact regional trade ecosystems among customers, partners, and Microsoft [Source: Microsoft 2025 10-K p.37].\n\n**Trade Policy and Tariff Impacts**\nGeopolitical instability may lead to sanctions and impact Microsoft's ability to do business in some markets [Source: Microsoft 2025 10-K p.42]. U.S. tariff volatility has triggered economic uncertainty and could impact cloud and devices supply chain cost competitiveness [Source: Microsoft 2025 10-K p.37]. Changes to trade policy resulting from populism, protectionism, or economic nationalism may result in higher tariffs, local sourcing initiatives, non-local sourcing restrictions, export controls, and investment restrictions that make it more difficult to operate and sell products in foreign countries [Source: Microsoft 2025 10-K p.42].\n\n**Component Availability and Manufacturing**\nDatacenter servers, Xbox consoles, Surface devices, and other hardware are assembled in Asia and other geographies that may be subject to disruptions in the supply chain [Source: Microsoft 2025 10-K p.33]. Legal or regulatory changes that restrict supply sources may cause components to be delayed or become unavailable, resulting in reduced sales or inadequate datacenter capacity [Source: Microsoft 2025 10-K p.33]. U.S. import controls restrict Microsoft from integrating certain information and communication technologies into its supply chain [Source: Microsoft 2025 10-K p.37].\n\n**Infrastructure Dependencies**\nThe cost or availability of datacenter dependencies\u2014including permitted and buildable land, predictable energy, networking supplies, and servers\u2014could be adversely affected by geopolitical disruptions [Source: Microsoft 2025 10-K p.33].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-036",
+      "question": "Compare Microsoft\u2019s FY2025 and FY2024 income before taxes and effective tax rate disclosures, and summarize the stated drivers.",
+      "strategy": "standard",
+      "model_answer": "Based on the provided documents, here is the comparison of Microsoft's FY2025 and FY2024 income before taxes and effective tax rate disclosures:\n\n**Income Before Income Taxes**\nIn fiscal year 2025, Microsoft reported U.S. income before income taxes of $69.2 billion and foreign income before income taxes of $54.4 billion [Source: Microsoft 2025 10-K p.60]. In fiscal year 2024, the company reported U.S. income before income taxes of $62.9 billion and foreign income before income taxes of $44.9 billion [Source: Microsoft 2025 10-K p.60].\n\n**Effective Tax Rate**\nMicrosoft reported an effective tax rate of 18% for both fiscal years 2025 and 2024 [Source: Microsoft 2025 10-K p.60].\n\n**Stated Drivers**\nThe documents cite the following drivers for the effective tax rate and income mix:\n\n*   **Geographic Mix of Earnings:** The effective tax rate was impacted by changes in the mix of earnings and tax expenses between the U.S. and foreign countries [Source: Microsoft 2025 10-K p.60].\n*   **Foreign Jurisdictions:** The effective tax rate was lower than the U.S. federal statutory rate primarily due to earnings taxed at lower rates in foreign jurisdictions, resulting from producing and distributing products and services through the foreign regional operations center in Ireland [Source: Microsoft 2025 10-K p.60].\n*   **Customer Demand:** The geographic distribution of, and customer demand for, products and services impacted the mix of income before income taxes between the U.S. and foreign countries [Source: Microsoft 2025 10-K p.60].",
+      "judge_score": {
+        "factual_accuracy": 4,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [
+          "Income before taxes was $123.627 billion in 2025 and $107.787 billion in 2024."
+        ],
+        "unsupported_claims": [],
+        "final_score": 80
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 4,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [\"Income before taxes was $123.627 billion in 2025 and $107.787 billion in 2024.\"],\n  \"unsupported_claims\": [],\n  \"final_score\": 80\n}"
+    },
+    {
+      "id": "msft-2025-10k-037",
+      "question": "What does Microsoft's unearned-revenue schedule suggest about near-term revenue recognition concentration?",
+      "strategy": "standard",
+      "model_answer": "Based on the provided documents, Microsoft's unearned revenue and remaining performance obligations suggest the following about near-term revenue recognition concentration:\n\n**Approximately 40% of remaining performance obligations will be recognized within 12 months.**\nAs of June 30, 2025, Microsoft reported revenue allocated to remaining performance obligations of $375 billion. The company expects to recognize approximately 40% of this total over the next 12 months, with the remainder recognized thereafter [Source: Microsoft 2025 10-K p.107].\n\n**Unearned revenue increased year-over-year, indicating continued future revenue growth.**\nThe ending balance of unearned revenue for the year ended June 30, 2025, was $67,265 million, an increase from the beginning balance of $60,184 million. This growth was driven by $186,957 million in deferrals of revenue, partially offset by $179,876 million in recognition of unearned revenue [Source: Microsoft 2025 10-K p.107].\n\n**Commercial cloud represents the vast majority of future obligations.**\nOf the $375 billion in remaining performance obligations as of June 30, 2025, approximately $368 billion is related to the commercial portion of revenue [Source: Microsoft 2025 10-K p.107].",
+      "judge_score": {
+        "factual_accuracy": 3,
+        "citation_quality": 4,
+        "hallucination": false,
+        "missing_facts": [
+          "Total unearned revenue schedule is $67.265 billion.",
+          "Amounts for the next four quarters sum to $64.555 billion.",
+          "Thereafter amount is $2.710 billion.",
+          "Near-term recognition dominates the schedule."
+        ],
+        "unsupported_claims": [],
+        "final_score": 40
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 3,\n  \"citation_quality\": 4,\n  \"hallucination\": false,\n  \"missing_facts\": [\n    \"Total unearned revenue schedule is $67.265 billion.\",\n    \"Amounts for the next four quarters sum to $64.555 billion.\",\n    \"Thereafter amount is $2.710 billion.\",\n    \"Near-term recognition dominates the schedule.\"\n  ],\n  \"unsupported_claims\": [],\n  \"final_score\": 40\n}"
+    },
+    {
+      "id": "msft-2025-10k-038",
+      "question": "Synthesize Microsoft's financial flexibility narrative using liquidity, debt market access, and contractual obligations.",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents.\n\nThe provided context contains Microsoft's accounting policies, business overview, segment recast information, and fiscal year 2025 highlights, but it does not contain the specific sections of the 10-K that would detail liquidity positions, debt market access, credit facilities, or contractual obligations tables.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [
+          "Liquidity statement says resources are expected to be sufficient for at least the next 12 months and thereafter.",
+          "Debt proceeds discussion references favorable pricing and liquidity in debt markets.",
+          "Total contractual obligations are $397.045 billion.",
+          "The filing presents these obligations alongside a sufficiency narrative for funding."
+        ],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [\n    \"Liquidity statement says resources are expected to be sufficient for at least the next 12 months and thereafter.\",\n    \"Debt proceeds discussion references favorable pricing and liquidity in debt markets.\",\n    \"Total contractual obligations are $397.045 billion.\",\n    \"The filing presents these obligations alongside a sufficiency narrative for funding.\"\n  ],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-039",
+      "question": "How did Microsoft's More Personal Computing results combine growth and decline signals in fiscal 2025?",
+      "strategy": "standard",
+      "model_answer": "Based on the provided documents, Microsoft's More Personal Computing segment showed the following combination of growth and decline signals in fiscal 2025:\n\n**Overall Segment Performance**\nThe segment demonstrated overall growth, with revenue increasing $3.8 billion or 7% to $54,649 million and operating income increasing $2.2 billion or 18% to $14,166 million [Source: Microsoft 2025 10-K p.55, p.57].\n\n**Growth Signals**\n*   **Search and news advertising:** Revenue increased $1.6 billion or 13%. Excluding traffic acquisition costs (TAC), revenue increased 20% driven by higher search volume and higher revenue per search [Source: Microsoft 2025 10-K p.57].\n*   **Gaming:** Revenue increased $2.0 billion or 9% [Source: Microsoft 2025 10-K p.57].\n*   **Xbox content and services:** Revenue increased 16%, driven by the impact of the Activision Blizzard acquisition and Xbox Game Pass [Source: Microsoft 2025 10-K p.57].\n*   **Windows OEM:** Revenue increased, which helped drive a 3% increase in the combined Windows OEM and Devices revenue metric [Source: Microsoft 2025 10-K p.57].\n*   **Gross margin:** Increased $3.5 billion or 13% with improvement across all businesses [Source: Microsoft 2025 10-K p.57].\n\n**Decline Signals**\n*   **Devices:** Revenue declined, offsetting part of the growth in Windows OEM [Source: Microsoft 2025 10-K p.57].\n*   **Xbox hardware:** Revenue decreased 25%, driven by a lower volume of consoles sold [Source: Microsoft 2025 10-K p.57].\n*   **Server products:** Revenue decreased 3% driven by a decrease in transactional purchasing with continued customer shift to cloud offerings [Source: Microsoft 2025 10-K p.57].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "```json\n{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}\n```"
+    },
+    {
+      "id": "msft-2025-10k-040",
+      "question": "Explain how Microsoft connected talent risks to long-term execution capability.",
+      "strategy": "standard",
+      "model_answer": "Based on the provided documents, Microsoft connects talent risks to long-term execution capability through several key mechanisms:\n\n**Strategic Talent Investment for Competitive Advantage**\nMicrosoft explicitly links its ability to execute on product development to its workforce strategy. The company states that it develops most products and services internally, which \"allows us to maintain competitive advantages that come from product differentiation and closer technical control over our products and services\" [Source: Microsoft 2025 10-K p.16]. This internal development model means that talent retention directly impacts technical control and product roadmap decisions.\n\n**Compensation as a Retention and Risk Mitigation Tool**\nThe company designs programs specifically to \"attract, reward, and retain top talent while fostering continuous employee development and reinforcing our organizational culture and values\" [Source: Microsoft 2025 10-K p.16]. Microsoft describes its total compensation offering as \"both highly differentiated and competitive within the market\" and notes that it \"monitor[s] pay equity across multiple dimensions\" [Source: Microsoft 2025 10-K p.16]. This suggests talent risks are managed through compensation competitiveness.\n\n**Employee Feedback Systems for Risk Identification**\nMicrosoft connects talent risks to execution through \"employee listening systems\" that gather direct feedback from the workforce, \"enabling us to adapt our programs and address employee needs globally with real-time insights\" [Source: Microsoft 2025 10-K p.16]. This positions employee feedback as an early warning system for execution risks.\n\n**Workforce Scale and R&D Investment**\nAs of June 30, 2025, Microsoft employed approximately 228,000 people, with 80,000 specifically in product research and development [Source: Microsoft 2025 10-K p.14]. The company states it plans to \"continue to make significant investments in a broad range of product research and development activities\" [Source: Microsoft 2025 10-K p.16], directly connecting R&D talent capacity to future growth execution.\n\n**Culture Embedded in Security Execution**\nThe company notes that its culture \"prioritizes the security of both our customers and Microsoft, embedding this responsibility across all teams and functions\" [Source: Microsoft 2025 10-K p.16], linking workforce culture directly to a critical execution capability.",
+      "judge_score": {
+        "factual_accuracy": 2,
+        "citation_quality": 3,
+        "hallucination": true,
+        "missing_facts": [
+          "The filing says business depends on attracting and retaining talent.",
+          "The market for highly skilled workers is described as extremely competitive.",
+          "Restrictive immigration laws are cited as a recruiting constraint.",
+          "Failure to recruit/retain key talent is linked to adverse effects on delivery and strategy."
+        ],
+        "unsupported_claims": [
+          "The answer claims Microsoft 'explicitly links its ability to execute on product development to its workforce strategy' in the context of risk, but the provided text describes internal development advantages, not risk linkages.",
+          "The answer claims compensation is a 'Risk Mitigation Tool', which is not stated in the context.",
+          "The answer claims employee feedback systems are an 'early warning system for execution risks', which is not stated in the context."
+        ],
+        "final_score": 20
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "```json\n{\n  \"factual_accuracy\": 2,\n  \"citation_quality\": 3,\n  \"hallucination\": true,\n  \"missing_facts\": [\n    \"The filing says business depends on attracting and retaining talent.\",\n    \"The market for highly skilled workers is described as extremely competitive.\",\n    \"Restrictive immigration laws are cited as a recruiting constraint.\",\n    \"Failure to recruit/retain key talent is linked to adverse effects on delivery and strategy.\"\n  ],\n  \"unsupported_claims\": [\n    \"The answer claims Microsoft 'explicitly links its ability to execute on product development to its workforce strategy' in the context of risk, but the provided text describes internal development advantages, not risk linkages.\",\n    \"The answer claims compensation is a 'Risk Mitigation Tool', which is not stated in the context.\",\n    \"The answer claims employee feedback systems are an 'early warning system for execution risks', which is not stated in the context.\"\n  ],\n  \"final_score\": 20\n}\n```"
+    },
+    {
+      "id": "msft-2025-10k-041",
+      "question": "What exact dollar amount did Microsoft disclose for fiscal 2025 total Azure revenue?",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents. The fiscal 2025 10-K discloses that \"Azure and other cloud services revenue grew 34%\" [Source: Microsoft 2025 10-K p.57] and that \"Server products and cloud services revenue\" was $98,435 million [Source: Microsoft 2025 10-K p.119], but it does not provide a specific dollar amount for Azure revenue separate from \"other cloud services.\"",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-042",
+      "question": "What exact weighted average maturity in years did Microsoft report for its fixed-income portfolio at June 30, 2025?",
+      "strategy": "standard",
+      "model_answer": "This information is not available in the provided documents.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-043",
+      "question": "Did Microsoft disclose that cloud gross margin improved in fiscal 2025 due primarily to AI infrastructure scaling?",
+      "strategy": "standard",
+      "model_answer": "No, Microsoft disclosed the opposite. The company stated that Microsoft Cloud gross margin percentage **decreased** to 69% driven by the impact of scaling AI infrastructure, offset in part by efficiency gains [Source: Microsoft 2025 10-K p.54]. Similarly, the company reported that gross margin percentage decreased in both the Intelligent Cloud segment [Source: Microsoft 2025 10-K p.57] and Productivity and Business Processes segment [Source: Microsoft 2025 10-K p.55] due to the impact of scaling AI infrastructure.",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-044",
+      "question": "Did Microsoft report that Xbox hardware revenue increased in fiscal 2025 because of stronger console unit volume?",
+      "strategy": "standard",
+      "model_answer": "No, Microsoft reported the opposite. Xbox hardware revenue decreased 25% driven by lower volume of consoles sold [Source: Microsoft 2025 10-K p.57].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    },
+    {
+      "id": "msft-2025-10k-045",
+      "question": "Did Microsoft disclose any unresolved SEC staff comments outstanding from reports issued 180+ days before fiscal year-end 2025?",
+      "strategy": "standard",
+      "model_answer": "No. Microsoft disclosed that it \"received no written comments regarding our periodic or current reports from the staff of the Securities and Exchange Commission that were issued 180 days or more preceding the end of our fiscal year 2025 that remain unresolved\" [Source: Microsoft 2025 10-K p.44].",
+      "judge_score": {
+        "factual_accuracy": 5,
+        "citation_quality": 5,
+        "hallucination": false,
+        "missing_facts": [],
+        "unsupported_claims": [],
+        "final_score": 100
+      },
+      "judge_status": "ok",
+      "judge_error": null,
+      "judge_raw_output": "{\n  \"factual_accuracy\": 5,\n  \"citation_quality\": 5,\n  \"hallucination\": false,\n  \"missing_facts\": [],\n  \"unsupported_claims\": [],\n  \"final_score\": 100\n}"
+    }
+  ]
+}

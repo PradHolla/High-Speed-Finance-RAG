@@ -15,6 +15,7 @@ The backend data ingestion and retrieval engine has been fully scaffolded, provi
 * **Semantic Chunking Logic:** Implemented a targeted chunking strategy that splits documents based on structural line breaks (double newlines) rather than arbitrary character counts, ensuring financial tables and distinct paragraphs remain intact.
 * **Cloud Embedding Integration:** Wired the ingestion pipeline to AWS Bedrock to generate high-quality 1024-dimensional vectors using the Amazon Titan Text v2 embedding model.
 * **LangChain Retrieval Bridge:** Developed the `ask_financial_system` core wrapper utilizing `langchain-aws`. This function seamlessly embeds user queries, executes vector similarity searches using Qdrant's `query_points` method, formats the retrieved context blocks with metadata citations, and passes the payload to the LLM generation chain.
+* **Web Application MVP:** Added a FastAPI backend (`/health`, `/ingest`, `/chat`) and React chat frontend with one-file ingestion, strategy selection, inline citations, and expandable retrieval evidence panel.
 
 ## Yet to be Done (Generation, Evaluation, & UI)
 With the core backend engine operational, the remaining tasks focus on the language model's reasoning capabilities, strict accuracy evaluation, and the user interface.
@@ -24,7 +25,7 @@ With the core backend engine operational, the remaining tasks focus on the langu
 * **Golden Dataset Creation:** Manually review the ingested SEC filings to construct a robust evaluation dataset consisting of 50 highly complex, verified financial questions and their exact textual or numerical answers.
 * **Retrieval Evaluation Loop (Context Precision):** Build an automated testing script to calculate how accurately the Qdrant database fetches the correct text chunks before the language model processes them.
 * **Generation Evaluation Loop (LLM-as-a-Judge):** Develop an automated evaluation pipeline utilizing a frontier reasoning model to score the RAG system's final outputs against the Golden Dataset, measuring Exact Match (for numbers) and Faithfulness (penalizing ungrounded claims).
-* **Frontend UI Development:** Wrap the `ask_financial_system` pipeline in a Streamlit web application to provide a clean, interactive chat interface for users to upload documents and view cited answers.
+* **Frontend UX Expansion:** Add richer session management, stronger ingest progress reporting, and a run-history view for evaluation traces.
 
 ## Setup & Installation Instructions
 
@@ -66,7 +67,7 @@ docker-compose up -d
 You can verify Qdrant is running by visiting `http://localhost:6333/dashboard` in your browser.
 
 ### 4. Run the Data Ingestion Pipeline
-Place your target financial documents (e.g., `10-K.pdf`) in the root directory. Run the ingestion script. This script will extract the text, apply semantic chunking, generate vector embeddings via AWS Titan, and populate the Qdrant collection using memory-efficient `int8` quantization.
+Place your target financial documents (e.g., `10-K.pdf`) in the root directory. Run the ingestion script. This script now preserves page-aware metadata in each chunk payload (`page_numbers`, `page_start`, `page_end`, `source_file`, `filing_type`, and stable `chunk_id`), generates embeddings via AWS Titan, and populates the Qdrant collection.
 
 ```bash
 uv run ingestion.py
@@ -74,9 +75,45 @@ uv run ingestion.py
 *Expected output: You should see the terminal log the chunking process and confirm that the ingestion to Qdrant is complete.*
 
 ### 5. Test the Retrieval & Generation Engine
-Once the database is populated, you can test the core RAG bridge. This script takes a natural language query, retrieves the most relevant chunks from Qdrant, and generates an explicitly cited answer using LangChain and AWS Bedrock.
+Once the database is populated, you can test the core RAG bridge. The retrieval wrapper now returns structured evidence with rank and score (`retrieve_chunks`) and supports metadata filters (`company`, `filing_year`, `filing_type`). Generation supports three strategies: `standard`, `extraction` (strict JSON), and `comparison`.
 
 ```bash
 uv run retrieval_engine.py
 ```
 *Expected output: The terminal will print the embedded query logs, followed by the synthesized financial answer from the language model.*
+
+### 6. Run Retrieval Evaluation (Context Precision / Recall@k)
+Run the retrieval evaluation loop against the golden dataset:
+
+```bash
+uv run eval_retrieval.py --golden-path data/golden_dataset.jsonl --top-k 5 --output artifacts/retrieval_eval.json
+```
+
+*Expected output: Summary metrics printed in terminal and detailed per-question retrieval diagnostics written to `artifacts/retrieval_eval.json`.*
+
+### 7. Run Generation Evaluation (LLM-as-a-Judge)
+Run generation scoring against the same dataset:
+
+```bash
+uv run eval_generation.py --golden-path data/golden_dataset.jsonl --top-k 5 --strategy standard --output artifacts/generation_eval.json
+```
+
+*Expected output: Judge summary metrics printed in terminal and detailed per-question scoring written to `artifacts/generation_eval.json`.*
+
+### 8. Run the Full Chat Application (FastAPI + React + Qdrant)
+Start all services (Qdrant, backend API, and frontend UI):
+
+```bash
+docker compose up -d --build
+```
+
+Service URLs:
+- Frontend: `http://localhost:5173`
+- Backend API: `http://localhost:8000`
+- Qdrant dashboard: `http://localhost:6333/dashboard`
+
+MVP flow:
+1. Open the frontend.
+2. Ingest one PDF with company/year/type metadata.
+3. Ask questions in chat with strategy + top-k controls.
+4. Expand evidence to inspect retrieved chunk rank/score/page citations.

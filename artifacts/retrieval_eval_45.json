@@ -1,0 +1,1496 @@
+{
+  "summary": {
+    "questions_evaluated": 45,
+    "top_k": 5,
+    "recall_at_k": 0.8888888888888888,
+    "context_precision": 0.5155555555555555,
+    "mrr": 0.7888888888888889
+  },
+  "rows": [
+    {
+      "id": "msft-2025-10k-001",
+      "question": "What were Microsoft's total revenue, gross margin, operating income, net income, and diluted EPS in fiscal 2025, and how did each compare with fiscal 2024?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.8,
+      "mrr_component": 1.0,
+      "relevant_chunks": 4,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0047"
+      ],
+      "retrieved_pages": [
+        [
+          55
+        ],
+        [
+          60
+        ],
+        [
+          54
+        ],
+        [
+          119
+        ],
+        [
+          49
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-002",
+      "question": "Which Microsoft segment generated the most revenue and operating income in fiscal 2025, and how did the three reportable segments compare?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.8,
+      "mrr_component": 1.0,
+      "relevant_chunks": 4,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0114",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0006"
+      ],
+      "retrieved_pages": [
+        [
+          55
+        ],
+        [
+          54
+        ],
+        [
+          118
+        ],
+        [
+          119
+        ],
+        [
+          8
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-003",
+      "question": "What drove the fiscal 2025 revenue increase in Microsoft's Productivity and Business Processes segment?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 1.0,
+      "mrr_component": 1.0,
+      "relevant_chunks": 5,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0114",
+        "microsoft_2025_10_k_10_k_pdf_c0050",
+        "microsoft_2025_10_k_10_k_pdf_c0115"
+      ],
+      "retrieved_pages": [
+        [
+          55
+        ],
+        [
+          54
+        ],
+        [
+          118
+        ],
+        [
+          52
+        ],
+        [
+          119
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-004",
+      "question": "How did Intelligent Cloud perform in fiscal 2025, and what role did Azure and AI infrastructure play in the segment's results?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.8,
+      "mrr_component": 0.5,
+      "relevant_chunks": 4,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0009",
+        "microsoft_2025_10_k_10_k_pdf_c0113",
+        "microsoft_2025_10_k_10_k_pdf_c0055",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0053"
+      ],
+      "retrieved_pages": [
+        [
+          11
+        ],
+        [
+          117
+        ],
+        [
+          57
+        ],
+        [
+          54
+        ],
+        [
+          55
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-005",
+      "question": "Within More Personal Computing, which businesses drove fiscal 2025 revenue growth and which business declined?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.8,
+      "mrr_component": 1.0,
+      "relevant_chunks": 4,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0055",
+        "microsoft_2025_10_k_10_k_pdf_c0114",
+        "microsoft_2025_10_k_10_k_pdf_c0050"
+      ],
+      "retrieved_pages": [
+        [
+          54
+        ],
+        [
+          55
+        ],
+        [
+          57
+        ],
+        [
+          118
+        ],
+        [
+          52
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-006",
+      "question": "What liquidity resources did Microsoft say it had at June 30, 2025, and what commitments did it expect those resources to fund?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.2,
+      "mrr_component": 1.0,
+      "relevant_chunks": 1,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0059",
+        "microsoft_2025_10_k_10_k_pdf_c0103",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0104"
+      ],
+      "retrieved_pages": [
+        [
+          61
+        ],
+        [
+          107
+        ],
+        [
+          119
+        ],
+        [
+          60
+        ],
+        [
+          108
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-007",
+      "question": "How much cash did Microsoft generate from operations in fiscal 2025, and what were its largest investing and financing cash outflows?",
+      "top_k": 5,
+      "recall_hit": false,
+      "context_precision": 0.0,
+      "mrr_component": 0.0,
+      "relevant_chunks": 0,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0055"
+      ],
+      "retrieved_pages": [
+        [
+          55
+        ],
+        [
+          119
+        ],
+        [
+          54
+        ],
+        [
+          60
+        ],
+        [
+          57
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-008",
+      "question": "According to Microsoft's market risk sensitivity analysis, which hypothetical change had the largest stated impact as of June 30, 2025?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 0.3333333333333333,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0035",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0003",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0068"
+      ],
+      "retrieved_pages": [
+        [
+          37
+        ],
+        [
+          60
+        ],
+        [
+          5
+        ],
+        [
+          54
+        ],
+        [
+          70
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-009",
+      "question": "What supply chain and geopolitical risks did Microsoft disclose that could affect cloud, AI, and device operations?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 1.0,
+      "mrr_component": 1.0,
+      "relevant_chunks": 5,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0035",
+        "microsoft_2025_10_k_10_k_pdf_c0031",
+        "microsoft_2025_10_k_10_k_pdf_c0040",
+        "microsoft_2025_10_k_10_k_pdf_c0024",
+        "microsoft_2025_10_k_10_k_pdf_c0049"
+      ],
+      "retrieved_pages": [
+        [
+          37
+        ],
+        [
+          33
+        ],
+        [
+          42
+        ],
+        [
+          26
+        ],
+        [
+          51
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-010",
+      "question": "How does Microsoft describe its cybersecurity risk management approach, including the Secure Future Initiative and incident response process?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 1.0,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0043",
+        "microsoft_2025_10_k_10_k_pdf_c0042",
+        "microsoft_2025_10_k_10_k_pdf_c0004",
+        "microsoft_2025_10_k_10_k_pdf_c0027",
+        "microsoft_2025_10_k_10_k_pdf_c0003"
+      ],
+      "retrieved_pages": [
+        [
+          45
+        ],
+        [
+          44
+        ],
+        [
+          6
+        ],
+        [
+          29
+        ],
+        [
+          5
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-011",
+      "question": "How was Microsoft's workforce distributed at fiscal year-end 2025 by geography and function, and which functions were the largest?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 1.0,
+      "mrr_component": 1.0,
+      "relevant_chunks": 5,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0012",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0014",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0058"
+      ],
+      "retrieved_pages": [
+        [
+          14
+        ],
+        [
+          55
+        ],
+        [
+          16
+        ],
+        [
+          54
+        ],
+        [
+          60
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-012",
+      "question": "How did Microsoft's product versus service revenue mix look in fiscal 2025, and which category drove total revenue growth versus fiscal 2024?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 1.0,
+      "mrr_component": 1.0,
+      "relevant_chunks": 5,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0055",
+        "microsoft_2025_10_k_10_k_pdf_c0050"
+      ],
+      "retrieved_pages": [
+        [
+          55
+        ],
+        [
+          54
+        ],
+        [
+          119
+        ],
+        [
+          57
+        ],
+        [
+          52
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-013",
+      "question": "Compare Microsoft's three major operating expense categories in fiscal 2025 and explain how each changed from fiscal 2024.",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.8,
+      "mrr_component": 1.0,
+      "relevant_chunks": 4,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0056",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0103"
+      ],
+      "retrieved_pages": [
+        [
+          55
+        ],
+        [
+          60
+        ],
+        [
+          58
+        ],
+        [
+          54
+        ],
+        [
+          107
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-014",
+      "question": "What tax-rate and profit-mix disclosures did Microsoft provide for fiscal 2025, including U.S. versus foreign income before taxes?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 1.0,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0099",
+        "microsoft_2025_10_k_10_k_pdf_c0073",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0053"
+      ],
+      "retrieved_pages": [
+        [
+          60
+        ],
+        [
+          103
+        ],
+        [
+          76
+        ],
+        [
+          54
+        ],
+        [
+          55
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-015",
+      "question": "How much unearned revenue did Microsoft expect to recognize after June 30, 2025, and how was that recognition scheduled across periods?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.2,
+      "mrr_component": 1.0,
+      "relevant_chunks": 1,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0103",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0115"
+      ],
+      "retrieved_pages": [
+        [
+          107
+        ],
+        [
+          60
+        ],
+        [
+          55
+        ],
+        [
+          54
+        ],
+        [
+          119
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-016",
+      "question": "What were Microsoft's disclosed contractual obligations as of June 30, 2025, and which categories were largest?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.2,
+      "mrr_component": 1.0,
+      "relevant_chunks": 1,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0103",
+        "microsoft_2025_10_k_10_k_pdf_c0018",
+        "microsoft_2025_10_k_10_k_pdf_c0015",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0052"
+      ],
+      "retrieved_pages": [
+        [
+          107
+        ],
+        [
+          20
+        ],
+        [
+          17
+        ],
+        [
+          60
+        ],
+        [
+          54
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-017",
+      "question": "How did Microsoft's debt profile change in fiscal 2025, including commercial paper, long-term debt carrying values, and near-term maturities?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 1.0,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0097",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0103",
+        "microsoft_2025_10_k_10_k_pdf_c0052"
+      ],
+      "retrieved_pages": [
+        [
+          60
+        ],
+        [
+          101
+        ],
+        [
+          119
+        ],
+        [
+          107
+        ],
+        [
+          54
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-018",
+      "question": "What did Microsoft disclose about shareholder returns in fiscal 2025, including buybacks, dividends, and remaining authorization?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.2,
+      "mrr_component": 0.25,
+      "relevant_chunks": 1,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0109",
+        "microsoft_2025_10_k_10_k_pdf_c0047",
+        "microsoft_2025_10_k_10_k_pdf_c0062",
+        "microsoft_2025_10_k_10_k_pdf_c0053"
+      ],
+      "retrieved_pages": [
+        [
+          60
+        ],
+        [
+          113
+        ],
+        [
+          49
+        ],
+        [
+          64
+        ],
+        [
+          55
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-019",
+      "question": "What were the biggest balance sheet shifts between June 30, 2024 and June 30, 2025 in assets, liabilities, and equity?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 1.0,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0070",
+        "microsoft_2025_10_k_10_k_pdf_c0104",
+        "microsoft_2025_10_k_10_k_pdf_c0056",
+        "microsoft_2025_10_k_10_k_pdf_c0101",
+        "microsoft_2025_10_k_10_k_pdf_c0103"
+      ],
+      "retrieved_pages": [
+        [
+          73
+        ],
+        [
+          108
+        ],
+        [
+          58
+        ],
+        [
+          105
+        ],
+        [
+          107
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-020",
+      "question": "How geographically concentrated was Microsoft's revenue in fiscal 2025, and what does the filing say about customer concentration?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 0.3333333333333333,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0050"
+      ],
+      "retrieved_pages": [
+        [
+          54
+        ],
+        [
+          55
+        ],
+        [
+          119
+        ],
+        [
+          60
+        ],
+        [
+          52
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-021",
+      "question": "What were Microsoft's product revenue and service-and-other revenue in fiscal 2025, and which line item drove year-over-year growth?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 1.0,
+      "mrr_component": 1.0,
+      "relevant_chunks": 5,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0055",
+        "microsoft_2025_10_k_10_k_pdf_c0050"
+      ],
+      "retrieved_pages": [
+        [
+          55
+        ],
+        [
+          54
+        ],
+        [
+          119
+        ],
+        [
+          57
+        ],
+        [
+          52
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-022",
+      "question": "How did Microsoft describe the link between AI infrastructure scaling and gross margin performance in fiscal 2025?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.8,
+      "mrr_component": 1.0,
+      "relevant_chunks": 4,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0055",
+        "microsoft_2025_10_k_10_k_pdf_c0003",
+        "microsoft_2025_10_k_10_k_pdf_c0050"
+      ],
+      "retrieved_pages": [
+        [
+          54
+        ],
+        [
+          55
+        ],
+        [
+          57
+        ],
+        [
+          5
+        ],
+        [
+          52
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-023",
+      "question": "What were Microsoft's net cash flows from operations, investing, and financing in fiscal 2025, and what does the combination imply about capital deployment?",
+      "top_k": 5,
+      "recall_hit": false,
+      "context_precision": 0.0,
+      "mrr_component": 0.0,
+      "relevant_chunks": 0,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0047"
+      ],
+      "retrieved_pages": [
+        [
+          55
+        ],
+        [
+          60
+        ],
+        [
+          54
+        ],
+        [
+          119
+        ],
+        [
+          49
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-024",
+      "question": "How did Microsoft's debt and short-term borrowing profile change from June 30, 2024 to June 30, 2025?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 1.0,
+      "mrr_component": 1.0,
+      "relevant_chunks": 5,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0103",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0104",
+        "microsoft_2025_10_k_10_k_pdf_c0047"
+      ],
+      "retrieved_pages": [
+        [
+          60
+        ],
+        [
+          107
+        ],
+        [
+          119
+        ],
+        [
+          108
+        ],
+        [
+          49
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-025",
+      "question": "Summarize Microsoft's statement on cybersecurity strategy and incident response governance in fiscal 2025.",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.6,
+      "mrr_component": 1.0,
+      "relevant_chunks": 3,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0042",
+        "microsoft_2025_10_k_10_k_pdf_c0043",
+        "microsoft_2025_10_k_10_k_pdf_c0004",
+        "microsoft_2025_10_k_10_k_pdf_c0003",
+        "microsoft_2025_10_k_10_k_pdf_c0058"
+      ],
+      "retrieved_pages": [
+        [
+          44
+        ],
+        [
+          45
+        ],
+        [
+          6
+        ],
+        [
+          5
+        ],
+        [
+          60
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-026",
+      "question": "What were Microsoft's total contractual obligations at June 30, 2025 and which two categories were largest?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.2,
+      "mrr_component": 1.0,
+      "relevant_chunks": 1,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0103",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0104"
+      ],
+      "retrieved_pages": [
+        [
+          107
+        ],
+        [
+          60
+        ],
+        [
+          54
+        ],
+        [
+          55
+        ],
+        [
+          108
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-027",
+      "question": "How did Microsoft characterize major trade and export-control risks to its operations?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 1.0,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0035",
+        "microsoft_2025_10_k_10_k_pdf_c0021",
+        "microsoft_2025_10_k_10_k_pdf_c0038",
+        "microsoft_2025_10_k_10_k_pdf_c0003",
+        "microsoft_2025_10_k_10_k_pdf_c0042"
+      ],
+      "retrieved_pages": [
+        [
+          37
+        ],
+        [
+          23
+        ],
+        [
+          40
+        ],
+        [
+          5
+        ],
+        [
+          44
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-028",
+      "question": "Compare fiscal 2025 operating income across Microsoft's three reportable segments and identify the largest contributor.",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.6,
+      "mrr_component": 1.0,
+      "relevant_chunks": 3,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0114"
+      ],
+      "retrieved_pages": [
+        [
+          55
+        ],
+        [
+          54
+        ],
+        [
+          119
+        ],
+        [
+          60
+        ],
+        [
+          118
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-029",
+      "question": "What market-risk sensitivity category produced the largest modeled impact in 2025, and how did it compare to interest-rate sensitivity?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.6,
+      "mrr_component": 1.0,
+      "relevant_chunks": 3,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0068",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0056",
+        "microsoft_2025_10_k_10_k_pdf_c0038",
+        "microsoft_2025_10_k_10_k_pdf_c0101"
+      ],
+      "retrieved_pages": [
+        [
+          70
+        ],
+        [
+          60
+        ],
+        [
+          58
+        ],
+        [
+          40
+        ],
+        [
+          105
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-030",
+      "question": "What did Microsoft disclose about workforce scale and functional mix, and why is that relevant to execution risk?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 1.0,
+      "mrr_component": 1.0,
+      "relevant_chunks": 5,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0014",
+        "microsoft_2025_10_k_10_k_pdf_c0035",
+        "microsoft_2025_10_k_10_k_pdf_c0012",
+        "microsoft_2025_10_k_10_k_pdf_c0049",
+        "microsoft_2025_10_k_10_k_pdf_c0021"
+      ],
+      "retrieved_pages": [
+        [
+          16
+        ],
+        [
+          37
+        ],
+        [
+          14
+        ],
+        [
+          51
+        ],
+        [
+          23
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-031",
+      "question": "Synthesize Microsoft's fiscal 2025 growth profile across total company results and segment-level drivers.",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 1.0,
+      "mrr_component": 1.0,
+      "relevant_chunks": 5,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0050",
+        "microsoft_2025_10_k_10_k_pdf_c0004",
+        "microsoft_2025_10_k_10_k_pdf_c0003"
+      ],
+      "retrieved_pages": [
+        [
+          55
+        ],
+        [
+          54
+        ],
+        [
+          52
+        ],
+        [
+          6
+        ],
+        [
+          5
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-032",
+      "question": "How do Microsoft's shareholder-return actions compare with its investment intensity in fiscal 2025?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 1.0,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0109",
+        "microsoft_2025_10_k_10_k_pdf_c0047"
+      ],
+      "retrieved_pages": [
+        [
+          60
+        ],
+        [
+          54
+        ],
+        [
+          55
+        ],
+        [
+          113
+        ],
+        [
+          49
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-033",
+      "question": "Explain how Microsoft linked cloud growth to margin pressure in fiscal 2025.",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.8,
+      "mrr_component": 1.0,
+      "relevant_chunks": 4,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0050",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0055"
+      ],
+      "retrieved_pages": [
+        [
+          55
+        ],
+        [
+          54
+        ],
+        [
+          52
+        ],
+        [
+          119
+        ],
+        [
+          57
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-034",
+      "question": "Assess the balance between U.S. and non-U.S. revenue in fiscal 2025 and its implication for concentration risk.",
+      "top_k": 5,
+      "recall_hit": false,
+      "context_precision": 0.0,
+      "mrr_component": 0.0,
+      "relevant_chunks": 0,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0101",
+        "microsoft_2025_10_k_10_k_pdf_c0103",
+        "microsoft_2025_10_k_10_k_pdf_c0059",
+        "microsoft_2025_10_k_10_k_pdf_c0056"
+      ],
+      "retrieved_pages": [
+        [
+          60
+        ],
+        [
+          105
+        ],
+        [
+          107
+        ],
+        [
+          61
+        ],
+        [
+          58
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-035",
+      "question": "How did Microsoft describe the interaction between geopolitical instability and supply-chain resilience?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.8,
+      "mrr_component": 1.0,
+      "relevant_chunks": 4,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0040",
+        "microsoft_2025_10_k_10_k_pdf_c0035",
+        "microsoft_2025_10_k_10_k_pdf_c0049",
+        "microsoft_2025_10_k_10_k_pdf_c0043",
+        "microsoft_2025_10_k_10_k_pdf_c0031"
+      ],
+      "retrieved_pages": [
+        [
+          42
+        ],
+        [
+          37
+        ],
+        [
+          51
+        ],
+        [
+          45
+        ],
+        [
+          33
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-036",
+      "question": "Compare Microsoft\u2019s FY2025 and FY2024 income before taxes and effective tax rate disclosures, and summarize the stated drivers.",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 1.0,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0047"
+      ],
+      "retrieved_pages": [
+        [
+          60
+        ],
+        [
+          55
+        ],
+        [
+          54
+        ],
+        [
+          119
+        ],
+        [
+          49
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-037",
+      "question": "What does Microsoft's unearned-revenue schedule suggest about near-term revenue recognition concentration?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 1.0,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0103",
+        "microsoft_2025_10_k_10_k_pdf_c0075",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0077"
+      ],
+      "retrieved_pages": [
+        [
+          107
+        ],
+        [
+          78
+        ],
+        [
+          119
+        ],
+        [
+          54
+        ],
+        [
+          80
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-038",
+      "question": "Synthesize Microsoft's financial flexibility narrative using liquidity, debt market access, and contractual obligations.",
+      "top_k": 5,
+      "recall_hit": false,
+      "context_precision": 0.0,
+      "mrr_component": 0.0,
+      "relevant_chunks": 0,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0073",
+        "microsoft_2025_10_k_10_k_pdf_c0047",
+        "microsoft_2025_10_k_10_k_pdf_c0003",
+        "microsoft_2025_10_k_10_k_pdf_c0049",
+        "microsoft_2025_10_k_10_k_pdf_c0020"
+      ],
+      "retrieved_pages": [
+        [
+          76
+        ],
+        [
+          49
+        ],
+        [
+          5
+        ],
+        [
+          51
+        ],
+        [
+          22
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-039",
+      "question": "How did Microsoft's More Personal Computing results combine growth and decline signals in fiscal 2025?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.2,
+      "mrr_component": 0.25,
+      "relevant_chunks": 1,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0050",
+        "microsoft_2025_10_k_10_k_pdf_c0055",
+        "microsoft_2025_10_k_10_k_pdf_c0058"
+      ],
+      "retrieved_pages": [
+        [
+          54
+        ],
+        [
+          55
+        ],
+        [
+          52
+        ],
+        [
+          57
+        ],
+        [
+          60
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-040",
+      "question": "Explain how Microsoft connected talent risks to long-term execution capability.",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 1.0,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0014",
+        "microsoft_2025_10_k_10_k_pdf_c0004",
+        "microsoft_2025_10_k_10_k_pdf_c0012",
+        "microsoft_2025_10_k_10_k_pdf_c0043",
+        "microsoft_2025_10_k_10_k_pdf_c0008"
+      ],
+      "retrieved_pages": [
+        [
+          16
+        ],
+        [
+          6
+        ],
+        [
+          14
+        ],
+        [
+          45
+        ],
+        [
+          10
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-041",
+      "question": "What exact dollar amount did Microsoft disclose for fiscal 2025 total Azure revenue?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.4,
+      "mrr_component": 0.3333333333333333,
+      "relevant_chunks": 2,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0055",
+        "microsoft_2025_10_k_10_k_pdf_c0050"
+      ],
+      "retrieved_pages": [
+        [
+          119
+        ],
+        [
+          55
+        ],
+        [
+          54
+        ],
+        [
+          57
+        ],
+        [
+          52
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-042",
+      "question": "What exact weighted average maturity in years did Microsoft report for its fixed-income portfolio at June 30, 2025?",
+      "top_k": 5,
+      "recall_hit": false,
+      "context_precision": 0.0,
+      "mrr_component": 0.0,
+      "relevant_chunks": 0,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0047"
+      ],
+      "retrieved_pages": [
+        [
+          60
+        ],
+        [
+          55
+        ],
+        [
+          54
+        ],
+        [
+          119
+        ],
+        [
+          49
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-043",
+      "question": "Did Microsoft disclose that cloud gross margin improved in fiscal 2025 due primarily to AI infrastructure scaling?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.6,
+      "mrr_component": 1.0,
+      "relevant_chunks": 3,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0055",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0050",
+        "microsoft_2025_10_k_10_k_pdf_c0115"
+      ],
+      "retrieved_pages": [
+        [
+          54
+        ],
+        [
+          57
+        ],
+        [
+          55
+        ],
+        [
+          52
+        ],
+        [
+          119
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-044",
+      "question": "Did Microsoft report that Xbox hardware revenue increased in fiscal 2025 because of stronger console unit volume?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.2,
+      "mrr_component": 0.5,
+      "relevant_chunks": 1,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0052",
+        "microsoft_2025_10_k_10_k_pdf_c0055",
+        "microsoft_2025_10_k_10_k_pdf_c0053",
+        "microsoft_2025_10_k_10_k_pdf_c0115",
+        "microsoft_2025_10_k_10_k_pdf_c0058"
+      ],
+      "retrieved_pages": [
+        [
+          54
+        ],
+        [
+          57
+        ],
+        [
+          55
+        ],
+        [
+          119
+        ],
+        [
+          60
+        ]
+      ]
+    },
+    {
+      "id": "msft-2025-10k-045",
+      "question": "Did Microsoft disclose any unresolved SEC staff comments outstanding from reports issued 180+ days before fiscal year-end 2025?",
+      "top_k": 5,
+      "recall_hit": true,
+      "context_precision": 0.2,
+      "mrr_component": 1.0,
+      "relevant_chunks": 1,
+      "retrieved_chunk_ids": [
+        "microsoft_2025_10_k_10_k_pdf_c0042",
+        "microsoft_2025_10_k_10_k_pdf_c0121",
+        "microsoft_2025_10_k_10_k_pdf_c0116",
+        "microsoft_2025_10_k_10_k_pdf_c0058",
+        "microsoft_2025_10_k_10_k_pdf_c0020"
+      ],
+      "retrieved_pages": [
+        [
+          44
+        ],
+        [
+          125
+        ],
+        [
+          120
+        ],
+        [
+          60
+        ],
+        [
+          22
+        ]
+      ]
+    }
+  ]
+}
