@@ -1,119 +1,151 @@
 # High-Speed Financial Document RAG System
 
+High-speed RAG pipeline for SEC filing analysis (10-K / 10-Q style PDFs) with:
+- page-grounded retrieval evidence,
+- citation-focused answer generation,
+- automated retrieval and generation evaluation.
 
-## Project Overview
-Financial analysts, equity researchers, and risk officers spend hundreds of hours each quarter manually reviewing dense SEC filings (such as 10-K and 10-Q reports) to extract critical performance metrics, identify emerging risk factors, and compare supply chain vulnerabilities. This manual extraction is tedious, error-prone, and acts as a significant bottleneck in financial decision-making. 
+## What This Project Does
+- Ingests financial filing PDFs into Qdrant with metadata and page spans.
+- Retrieves relevant chunks using Bedrock embeddings + vector search.
+- Generates responses with three strategies:
+- `standard`: grounded QA with inline citations
+- `comparison`: structured side-by-side synthesis
+- `extraction`: strict JSON-style extraction
+- Evaluates:
+- retrieval quality (`Recall@k`, `Context Precision`, `MRR`)
+- generation quality via LLM-as-a-Judge (factuality/citation/hallucination)
 
-This project solves this business problem by implementing a High-Speed Retrieval-Augmented Generation (RAG) system. The pipeline ingests complex financial PDFs, processes dense tabular data, and allows users to query the documents using natural language. The system synthesizes cross-document comparisons, retrieves exact numerical figures, and explicitly cites the source document and page number to completely eliminate hallucinations in a strict business context.
+## Current Stack
+- Python + `uv` dependency management
+- AWS Bedrock (`amazon.titan-embed-text-v2:0` + chat model via `RAG_CHAT_MODEL`)
+- Qdrant vector DB (Docker)
+- FastAPI backend (`/health`, `/ingest`, `/chat`)
+- React + Vite frontend
 
-## Completed Features (Core Architecture)
-The backend data ingestion and retrieval engine has been fully scaffolded, providing a plug-and-play foundation for prompt engineering and evaluation loops.
+## Repository Layout
+- `ingestion.py`: PDF extraction, semantic chunk merge, embedding upsert
+- `retrieval_engine.py`: retrieval + prompting strategies
+- `eval_retrieval.py`: retrieval metrics runner
+- `eval_generation.py`: LLM-as-a-judge generation evaluator
+- `backend_api.py`: FastAPI service
+- `frontend/`: chat UI
+- `data/`: golden datasets
+- `artifacts/`: evaluation outputs
 
-* **High-Speed Vector Database Setup:** Configured a local Qdrant instance via Docker, initialized with `int8` scalar quantization to keep quantized vectors in RAM for lightning-fast, memory-efficient retrieval.
-* **Strict Dependency Management:** Initialized the project environment utilizing the `uv` package manager for clean, reproducible builds.
-* **Automated Data Ingestion Pipeline:** Built a Python ingestion script using `pdfplumber` to extract text from SEC filings while preserving structural integrity.
-* **Semantic Chunking Logic:** Implemented a targeted chunking strategy that splits documents based on structural line breaks (double newlines) rather than arbitrary character counts, ensuring financial tables and distinct paragraphs remain intact.
-* **Cloud Embedding Integration:** Wired the ingestion pipeline to AWS Bedrock to generate high-quality 1024-dimensional vectors using the Amazon Titan Text v2 embedding model.
-* **LangChain Retrieval Bridge:** Developed the `ask_financial_system` core wrapper utilizing `langchain-aws`. This function seamlessly embeds user queries, executes vector similarity searches using Qdrant's `query_points` method, formats the retrieved context blocks with metadata citations, and passes the payload to the LLM generation chain.
-* **Web Application MVP:** Added a FastAPI backend (`/health`, `/ingest`, `/chat`) and React chat frontend with one-file ingestion, strategy selection, inline citations, and expandable retrieval evidence panel.
+## Prerequisites
+- Python 3.10+
+- `uv`
+- Docker + Docker Compose
+- AWS Bedrock access for embedding model + chat/judge model
 
-## Yet to be Done (Generation, Evaluation, & UI)
-With the core backend engine operational, the remaining tasks focus on the language model's reasoning capabilities, strict accuracy evaluation, and the user interface.
+## Environment
+Use either:
+1. AWS profile (`~/.aws`) with `AWS_PROFILE`, or
+2. Direct env vars (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION`)
 
-* **Advanced Prompt Engineering:** Implement multi-stage prompting strategies (e.g., Few-Shot extraction for strict JSON outputs and Chain-of-Thought reasoning for comparative queries) to force the model to explicitly cite its source text and prevent hallucinations.
-* **Automated SEC Data Scraping:** Integrate the `sec-edgar-downloader` to programmatically fetch batches of 10-K and 10-Q reports directly from the SEC database for target companies.
-* **Golden Dataset Creation:** Manually review the ingested SEC filings to construct a robust evaluation dataset consisting of 50 highly complex, verified financial questions and their exact textual or numerical answers.
-* **Retrieval Evaluation Loop (Context Precision):** Build an automated testing script to calculate how accurately the Qdrant database fetches the correct text chunks before the language model processes them.
-* **Generation Evaluation Loop (LLM-as-a-Judge):** Develop an automated evaluation pipeline utilizing a frontier reasoning model to score the RAG system's final outputs against the Golden Dataset, measuring Exact Match (for numbers) and Faithfulness (penalizing ungrounded claims).
-* **Frontend UX Expansion:** Add richer session management, stronger ingest progress reporting, and a run-history view for evaluation traces.
+Optional model overrides:
+- `RAG_CHAT_MODEL` (default: `zai.glm-5`)
+- `RAG_EMBEDDING_MODEL` (default: `amazon.titan-embed-text-v2:0`)
 
-## Setup & Installation Instructions
+## Quickstart
 
-### Prerequisites
-Before running this project, ensure you have the following installed:
-* **Python 3.10+**
-* **Docker Desktop** (Required for the local Qdrant vector database)
-* **uv** (The extremely fast Python package installer and resolver. Install via `curl -LsSf https://astral.sh/uv/install.sh | sh` on macOS/Linux)
-* **AWS Account** with Bedrock access explicitly granted for `amazon.titan-embed-text-v2:0` (for embeddings) and your chosen LLM (e.g., `meta.llama3-70b-instruct-v1:0`).
-
-### 1. Initialize the Environment
-Clone the repository and navigate into the project folder. Initialize the environment and install the required dependencies using `uv`:
-
+### 1) Install Python dependencies
 ```bash
-# Initialize project and create virtual environment
-uv init
-# Add required dependencies
-uv add boto3 python-dotenv qdrant-client pdfplumber langchain-aws langchain-core
+uv sync
 ```
 
-### 2. Configure Environment Variables
-Create a `.env` file in the root directory of the project. This file is required to securely connect to AWS Bedrock via Boto3. 
-
-Add your AWS IAM programmatic access keys to the `.env` file:
-
-```env
-AWS_ACCESS_KEY_ID="your_access_key_here"
-AWS_SECRET_ACCESS_KEY="your_secret_key_here"
-AWS_DEFAULT_REGION="us-east-1"
-```
-*(Note: Do not commit this file to version control. Ensure `.env` is added to your `.gitignore`).*
-
-### 3. Start the Vector Database
-We use Qdrant for lightning-fast, local vector retrieval. Start the database using Docker Compose. The `docker-compose.yml` file is configured for native volume binding to keep your quantized vectors secure locally.
-
+### 2) Start backend services
 ```bash
-docker-compose up -d
+docker compose up -d --build qdrant backend
 ```
-You can verify Qdrant is running by visiting `http://localhost:6333/dashboard` in your browser.
 
-### 4. Run the Data Ingestion Pipeline
-Place your target financial documents (e.g., `10-K.pdf`) in the root directory. Run the ingestion script. This script now preserves page-aware metadata in each chunk payload (`page_numbers`, `page_start`, `page_end`, `source_file`, `filing_type`, and stable `chunk_id`), generates embeddings via AWS Titan, and populates the Qdrant collection.
+Health checks:
+```bash
+curl http://localhost:6333/healthz
+curl http://localhost:8000/health
+```
 
+### 3) (Optional) Start frontend
+```bash
+docker compose up -d --build frontend
+```
+
+App URLs:
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:8000`
+- Qdrant Dashboard: `http://localhost:6333/dashboard`
+
+### 4) Ingest a filing
+CLI path:
 ```bash
 uv run ingestion.py
 ```
-*Expected output: You should see the terminal log the chunking process and confirm that the ingestion to Qdrant is complete.*
 
-### 5. Test the Retrieval & Generation Engine
-Once the database is populated, you can test the core RAG bridge. The retrieval wrapper now returns structured evidence with rank and score (`retrieve_chunks`) and supports metadata filters (`company`, `filing_year`, `filing_type`). Generation supports three strategies: `standard`, `extraction` (strict JSON), and `comparison`.
+Or use frontend ingest form / backend `/ingest` endpoint.
 
+## Evaluation
+
+### Retrieval evaluation
 ```bash
-uv run retrieval_engine.py
-```
-*Expected output: The terminal will print the embedded query logs, followed by the synthesized financial answer from the language model.*
-
-### 6. Run Retrieval Evaluation (Context Precision / Recall@k)
-Run the retrieval evaluation loop against the golden dataset:
-
-```bash
-uv run eval_retrieval.py --golden-path data/golden_dataset.jsonl --top-k 5 --output artifacts/retrieval_eval.json
+uv run eval_retrieval.py \
+  --golden-path data/golden_dataset_pratheek_25.jsonl \
+  --top-k 5 \
+  --output artifacts/retrieval_eval_pratheek25.json
 ```
 
-*Expected output: Summary metrics printed in terminal and detailed per-question retrieval diagnostics written to `artifacts/retrieval_eval.json`.*
-
-### 7. Run Generation Evaluation (LLM-as-a-Judge)
-Run generation scoring against the same dataset:
-
+### Generation evaluation (LLM-as-a-Judge)
 ```bash
-uv run eval_generation.py --golden-path data/golden_dataset.jsonl --top-k 5 --strategy standard --output artifacts/generation_eval.json
+uv run eval_generation.py \
+  --golden-path data/golden_dataset_aditya_25.jsonl \
+  --top-k 5 \
+  --strategy standard \
+  --judge-model zai.glm-5 \
+  --judge-temperature 0.0 \
+  --judge-max-tokens 1200 \
+  --output artifacts/generation_eval_aditya25_full_rerun.json
 ```
 
-*Expected output: Judge summary metrics printed in terminal and detailed per-question scoring written to `artifacts/generation_eval.json`.*
-
-### 8. Run the Full Chat Application (FastAPI + React + Qdrant)
-Start all services (Qdrant, backend API, and frontend UI):
-
 ```bash
-docker compose up -d --build
+uv run eval_generation.py \
+  --golden-path data/golden_dataset_pratheek_25.jsonl \
+  --top-k 5 \
+  --strategy standard \
+  --judge-model zai.glm-5 \
+  --judge-temperature 0.0 \
+  --judge-max-tokens 1200 \
+  --output artifacts/generation_eval_pratheek25_full.json
 ```
 
-Service URLs:
-- Frontend: `http://localhost:5173`
-- Backend API: `http://localhost:8000`
-- Qdrant dashboard: `http://localhost:6333/dashboard`
+## Latest Metrics
 
-MVP flow:
-1. Open the frontend.
-2. Ingest one PDF with company/year/type metadata.
-3. Ask questions in chat with strategy + top-k controls.
-4. Expand evidence to inspect retrieved chunk rank/score/page citations.
+### Retrieval (combined run)
+Source: `artifacts/retrieval_eval_45.json`
+- Questions: `45`
+- Top-k: `5`
+- Recall@5: `0.8889`
+- Context Precision: `0.5156`
+- MRR: `0.7889`
+
+### Generation (Aditya 25)
+Source: `artifacts/generation_eval_aditya25_full_rerun.json`
+- Questions: `25`
+- Avg Final Score: `91.6`
+- Avg Factual Accuracy: `4.76 / 5`
+- Avg Citation Quality: `4.8 / 5`
+- Hallucination Rate: `0.04`
+- Judge success/repair/failure: `1.0 / 0.0 / 0.0`
+
+### Generation (Pratheek 25)
+Source: `artifacts/generation_eval_pratheek25_full.json`
+- Questions: `25`
+- Avg Final Score: `91.2`
+- Avg Factual Accuracy: `4.72 / 5`
+- Avg Citation Quality: `4.8 / 5`
+- Hallucination Rate: `0.0`
+- Judge success/repair/failure: `1.0 / 0.0 / 0.0`
+
+## Notes
+- Retrieval is strong on recall; precision is the main improvement area.
+- Judge reliability hardening is implemented (schema validation + repair path + telemetry).
+- Current benchmark scope is centered on available filings/datasets in `data/`.

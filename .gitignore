@@ -14,3 +14,6 @@ qdrant_storage/
 # Frontend
 frontend/node_modules/
 frontend/dist/
+
+# Local presentation tooling artifacts
+pptx_converter.py

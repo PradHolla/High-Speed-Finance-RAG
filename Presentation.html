@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="slides-format" content="viewport">
+  <title>High-Speed Financial Document RAG System — FE524</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --bg2: #eef2f7;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #dbe4ee;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: var(--bg); }
+    body { font-family: 'Inter', sans-serif; color: var(--text); overflow: hidden; }
+    .deck { position: relative; width: 100vw; height: 100vh; }
+    .slide {
+      position: absolute; inset: 0; opacity: 0; pointer-events: none;
+      transition: opacity .35s ease, transform .35s ease;
+      transform: scale(.985);
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 34px 42px 70px;
+    }
+    .slide.active { opacity: 1; pointer-events: all; transform: scale(1); }
+    .content { width: 100%; max-width: 1100px; }
+    .eyebrow {
+      color: var(--accent); text-transform: uppercase; letter-spacing: .08em;
+      font-weight: 700; font-size: 12px; margin-bottom: 10px;
+    }
+    h1, h2 { margin: 0 0 14px; line-height: 1.12; }
+    h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; }
+    p { margin: 0; color: var(--muted); line-height: 1.55; }
+    .sub { font-size: 1rem; color: var(--muted); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .card {
+      background: white; border: 1px solid var(--line); border-radius: 14px;
+      padding: 16px 18px; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+    .small { font-size: 13px; color: var(--muted); }
+    .label { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+    .big { font-size: 2rem; font-weight: 800; color: var(--text); }
+    ul.clean { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
+    ul.clean li { margin: 8px 0; line-height: 1.45; }
+    .arch {
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; align-items: center;
+      margin-top: 16px;
+    }
+    .step {
+      background: white; border: 1px solid var(--line); border-radius: 12px; padding: 14px 10px;
+      text-align: center; font-size: 13px; font-weight: 600;
+    }
+    .arrow { text-align: center; color: var(--accent); font-weight: 800; }
+    .table {
+      width: 100%; border-collapse: collapse; background: white; border: 1px solid var(--line);
+      border-radius: 14px; overflow: hidden; font-size: 14px;
+    }
+    .table th, .table td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+    .table th { background: #f1f5f9; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .table tr:last-child td { border-bottom: none; }
+    .note {
+      margin-top: 14px; padding: 10px 12px; background: #eff6ff; border: 1px solid #bfdbfe;
+      border-radius: 10px; font-size: 12px; color: #1e3a8a;
+    }
+    .title-slide { text-align: center; }
+    .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+    .team .card { padding: 14px; }
+    .team .name { font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 4px; }
+    .nav-controls {
+      position: fixed; left: 50%; transform: translateX(-50%); bottom: 18px; z-index: 100;
+      display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.94);
+      border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px;
+      box-shadow: 0 8px 24px rgba(15,23,42,.08);
+    }
+    .nav-btn {
+      width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line);
+      background: white; cursor: pointer; color: var(--accent); font-size: 18px;
+    }
+    .slide-dots { display: flex; gap: 7px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #cbd5e1; cursor: pointer; }
+    .dot.active { background: var(--accent); }
+    .slide-counter { font-size: 12px; color: var(--muted); min-width: 42px; text-align: center; }
+    .reveal { opacity: 0; transform: translateY(10px); }
+    .accent { color: var(--accent); font-weight: 700; }
+  </style>
+</head>
+<body>
+<div class="deck">
+
+  <section class="slide active" data-slide="1">
+    <div class="content title-slide">
+      <div class="eyebrow reveal">FE524 Presentation · Stevens Institute of Technology</div>
+      <h1 class="reveal">High-Speed Financial Document RAG System</h1>
+      <p class="sub reveal">A simple, citation-grounded question answering system for SEC filings</p>
+      <div class="team reveal">
+        <div class="card"><div class="name">Pradhyumna Nagaraja Holla</div><div class="small">Core Architect & Data Pipeline</div></div>
+        <div class="card"><div class="name">Pallavi Maralla Satish</div><div class="small">Prompt Engineering & Generation</div></div>
+        <div class="card"><div class="name">Pratheek Prakash</div><div class="small">Retrieval Evaluation</div></div>
+        <div class="card"><div class="name">Aditya Nagaraj</div><div class="small">Generation Eval & LLM-as-a-Judge</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide="2">
+    <div class="content">
+      <div class="eyebrow reveal">Problem Statement</div>
+      <h2 class="reveal">Manual SEC filing analysis is slow and hard to verify</h2>
+      <div class="grid-2" style="margin-top:18px;">
+        <div class="card reveal"><div class="label">Pain Point</div><p>10-K and 10-Q filings are long, dense, and time-consuming to read manually.</p></div>
+        <div class="card reveal"><div class="label">Risk</div><p>Manual summaries can miss details and usually do not preserve page-level traceability.</p></div>
+        <div class="card reveal"><div class="label">Goal</div><p>Support natural-language questions over filings with grounded answers and inline page citations.</p></div>
+        <div class="card reveal"><div class="label">Approach</div><p>Use a RAG pipeline combining semantic retrieval, metadata filters, and controlled LLM prompting.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide="3">
+    <div class="content">
+      <div class="eyebrow reveal">System Architecture</div>
+      <h2 class="reveal">End-to-end pipeline</h2>
+      <div class="arch reveal">
+        <div class="step">PDF ingestion</div>
+        <div class="step">Chunking</div>
+        <div class="step">Bedrock embeddings</div>
+        <div class="step">Qdrant retrieval</div>
+        <div class="step">LLM generation</div>
+        <div class="step">Cited answer</div>
+      </div>
+      <div class="grid-3" style="margin-top:18px;">
+        <div class="card reveal"><div class="label">Metadata filters</div><p>company, filing_year, filing_type</p></div>
+        <div class="card reveal"><div class="label">Backend</div><p>FastAPI service with Dockerized deployment</p></div>
+        <div class="card reveal"><div class="label">Frontend</div><p>Simple UI for asking questions and viewing cited outputs</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide="4">
+    <div class="content">
+      <div class="eyebrow reveal">Chunking & Retrieval</div>
+      <h2 class="reveal">Chunking is designed to preserve financial meaning</h2>
+      <div class="grid-2" style="margin-top:18px;">
+        <div class="card reveal">
+          <ul class="clean">
+            <li>Paragraph-first extraction from the PDF.</li>
+            <li>Adjacent related paragraphs merged into semantic chunks.</li>
+            <li>Each chunk stores page-span metadata.</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <ul class="clean">
+            <li>Preserves multi-paragraph financial discussion.</li>
+            <li>Helps avoid broken context around metrics and disclosures.</li>
+            <li>Enables traceable inline citations in final answers.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide="5">
+    <div class="content">
+      <div class="eyebrow reveal">Prompting Strategies</div>
+      <h2 class="reveal">Three prompt modes support different question types</h2>
+      <div class="grid-3" style="margin-top:18px;">
+        <div class="card reveal"><div class="label">Standard</div><p>Grounded question answering with inline citations.</p></div>
+        <div class="card reveal"><div class="label">Comparison</div><p>Structured reasoning for comparing periods, firms, or disclosures.</p></div>
+        <div class="card reveal"><div class="label">Extraction</div><p>Strict JSON output validated in code, not just by prompt wording.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide="6">
+    <div class="content">
+      <div class="eyebrow reveal">Evaluation Framework</div>
+      <h2 class="reveal">We evaluate retrieval and generation separately</h2>
+      <div class="grid-2" style="margin-top:18px;">
+        <div class="card reveal">
+          <div class="label">Retrieval evaluation</div>
+          <ul class="clean">
+            <li>Recall@5</li>
+            <li>Context Precision</li>
+            <li>MRR</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <div class="label">Generation evaluation</div>
+          <ul class="clean">
+            <li>LLM-as-a-Judge scoring</li>
+            <li>Factual accuracy, citation quality, hallucination penalty</li>
+            <li>Parse / validate / repair telemetry for reliability</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide="7">
+    <div class="content">
+      <div class="eyebrow reveal">Dataset Setup</div>
+      <h2 class="reveal">Golden datasets, collection method, and usage</h2>
+      <div class="grid-2" style="margin-top:18px;">
+        <div class="card reveal">
+          <div class="label">What the datasets contain</div>
+          <ul class="clean">
+            <li>Two separate 25-question JSONL sets.</li>
+            <li>Pratheek set: IDs 001 to 025.</li>
+            <li>Aditya set: IDs 021 to 045.</li>
+            <li>Each row has question, expected answer or facts, source pages, and retrieval keywords.</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <div class="label">How data was collected</div>
+          <ul class="clean">
+            <li>Questions were generated with LLM assistance using GPT 5.4 and Sonnet 4.6.</li>
+            <li>The generated outputs were structured into JSONL benchmark rows.</li>
+            <li>Expected facts and source pages were then validated against the Microsoft 2025 10-K text.</li>
+            <li>Retrieval keywords were added for relevance checks, and two files were maintained for ownership split.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid-3" style="margin-top:14px;">
+        <div class="card reveal"><div class="big">45</div><div class="small">Rows used in retrieval reporting</div></div>
+        <div class="card reveal"><div class="big">50</div><div class="small">Generation evaluations across both sets</div></div>
+        <div class="card reveal"><div class="big">2</div><div class="small">Independent benchmark files</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide="8">
+    <div class="content">
+      <div class="eyebrow reveal">Results</div>
+      <h2 class="reveal">Exact benchmark metrics</h2>
+      <table class="table reveal" style="margin-top:16px; margin-bottom:14px;">
+        <thead>
+          <tr><th>Retrieval metric</th><th>Value</th><th>Generation metric</th><th>Aditya</th><th>Pratheek</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Recall@5</td><td><span class="accent">0.8889</span></td><td>Avg final score</td><td><span class="accent">91.6</span></td><td><span class="accent">91.2</span></td></tr>
+          <tr><td>Context Precision</td><td>0.5156</td><td>Factual</td><td>4.76</td><td>4.72</td></tr>
+          <tr><td>MRR</td><td>0.7889</td><td>Citation</td><td>4.8</td><td>4.8</td></tr>
+          <tr><td>—</td><td>—</td><td>Hallucination</td><td>0.04</td><td>0.0</td></tr>
+          <tr><td>—</td><td>—</td><td>Judge failure</td><td>0.0</td><td>0.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="slide" data-slide="9">
+    <div class="content">
+      <div class="eyebrow reveal">Scope Review</div>
+      <h2 class="reveal">What is done vs. what remains</h2>
+      <div class="grid-2" style="margin-top:18px;">
+        <div class="card reveal">
+          <div class="label">Done</div>
+          <ul class="clean">
+            <li>End-to-end RAG system</li>
+            <li>Prompting modes implemented</li>
+            <li>Retrieval and generation evaluation pipelines</li>
+            <li>Full benchmark runs completed</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <div class="label">Pending</div>
+          <ul class="clean">
+            <li>Broader multi-company corpus</li>
+            <li>Retrieval precision improvements</li>
+            <li>Formal acceptance thresholds</li>
+            <li>Compact error-analysis appendix</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide="10">
+    <div class="content title-slide">
+      <div class="eyebrow reveal">Conclusion</div>
+      <h2 class="reveal">Reliable grounded answering on the current corpus</h2>
+      <div class="grid-3" style="margin-top:18px; text-align:left;">
+        <div class="card reveal"><div class="label">Current status</div><p>System performs strongly on the present evaluation corpus with high citation quality.</p></div>
+        <div class="card reveal"><div class="label">Next step 1</div><p>Improve retrieval precision so fewer irrelevant chunks enter the final context window.</p></div>
+        <div class="card reveal"><div class="label">Next step 2</div><p>Expand filing coverage across more companies and reporting periods.</p></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav-controls">
+  <button class="nav-btn" onclick="changeSlide(-1)">&#8249;</button>
+  <div class="slide-dots" id="dots"></div>
+  <button class="nav-btn" onclick="changeSlide(1)">&#8250;</button>
+  <span class="slide-counter" id="counter">1 / 10</span>
+</div>
+
+<script>
+let current = 1;
+const total = document.querySelectorAll('.slide').length;
+const dotsContainer = document.getElementById('dots');
+const counter = document.getElementById('counter');
+for (let i = 1; i <= total; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'dot' + (i === 1 ? ' active' : '');
+  dot.onclick = () => goToSlide(i);
+  dotsContainer.appendChild(dot);
+}
+function goToSlide(n) {
+  const prev = document.querySelector('.slide.active');
+  const next = document.querySelector(`.slide[data-slide="${n}"]`);
+  if (prev) prev.classList.remove('active');
+  if (next) { next.classList.add('active'); animateSlide(next); }
+  current = n; updateNav();
+}
+function changeSlide(dir) {
+  let next = current + dir;
+  if (next < 1) next = total;
+  if (next > total) next = 1;
+  goToSlide(next);
+}
+function updateNav() {
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i + 1 === current));
+  counter.textContent = current + ' / ' + total;
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+});
+let touchStartX = 0;
+document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', (e) => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+});
+function animateSlide(slide) {
+  slide.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transition = 'none';
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(10px)';
+    el.offsetHeight;
+    const delay = i * 0.05;
+    el.style.transition = `opacity 0.25s ease ${delay}s, transform 0.25s ease ${delay}s`;
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  });
+}
+animateSlide(document.querySelector('.slide.active'));
+</script>
+</body>
+</html>
