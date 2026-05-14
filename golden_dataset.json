@@ -1,0 +1,303 @@
+{
+  "metadata": {
+    "document": "Microsoft Corporation Form 10-K",
+    "fiscal_year_ended": "June 30, 2025",
+    "sec_filing": "msft-20250630",
+    "dataset_author": "Pratheek",
+    "generated_at": "2026-05-14T06:08:49.231127Z",
+    "total_questions": 25,
+    "description": "Golden dataset of 25 complex, manually verified Q&A pairs for RAG retrieval evaluation (Context Precision testing)."
+  },
+  "questions": [
+    {
+      "id": "Q01",
+      "category": "Financial Performance",
+      "complexity": "Medium",
+      "question": "What was Microsoft's total revenue, gross margin, operating income, and net income for fiscal year 2025, and what were the year-over-year percentage changes for each?",
+      "answer": "In fiscal year 2025, Microsoft reported total revenue of $281.724 billion (up 15% YoY), gross margin of $193.893 billion (up 13% YoY), operating income of $128.528 billion (up 17% YoY), and net income of $101.832 billion (up 16% YoY).",
+      "source_pages": [
+        54,
+        71
+      ],
+      "relevant_chunks_hint": "Summary results of operations table; Income statements (Item 8)"
+    },
+    {
+      "id": "Q02",
+      "category": "Segment Revenue",
+      "complexity": "High",
+      "question": "Compare the revenue, cost of revenue, operating expenses, and operating income for all three of Microsoft's reportable segments in fiscal year 2025 versus fiscal year 2024. Which segment had the highest revenue growth?",
+      "answer": "Productivity and Business Processes: Revenue $120.810B (FY25) vs $106.820B (FY24), +13%; Operating Income $69.773B vs $59.661B, +17%. Intelligent Cloud: Revenue $106.265B vs $87.464B, +21%; Operating Income $44.589B vs $37.813B, +18%. More Personal Computing: Revenue $54.649B vs $50.838B, +7%; Operating Income $14.166B vs $11.959B, +18%. Intelligent Cloud had the highest revenue growth at 21%.",
+      "source_pages": [
+        55,
+        118
+      ],
+      "relevant_chunks_hint": "Segment results of operations table; Note 18 – Segment Information"
+    },
+    {
+      "id": "Q03",
+      "category": "Cloud Business",
+      "complexity": "Medium",
+      "question": "What was Microsoft's total Microsoft Cloud revenue in fiscal years 2025, 2024, and 2023, and what was the year-over-year growth rate in fiscal year 2025?",
+      "answer": "Microsoft Cloud revenue was $168.9 billion in FY2025, $137.7 billion in FY2024, and $111.6 billion in FY2023, representing 23% growth in FY2025. Growth was driven by Azure, Microsoft 365 Commercial cloud, LinkedIn, and Dynamics 365.",
+      "source_pages": [
+        49,
+        119
+      ],
+      "relevant_chunks_hint": "Overview highlights (MD&A); Note 18 product revenue table"
+    },
+    {
+      "id": "Q04",
+      "category": "Azure and Intelligent Cloud",
+      "complexity": "High",
+      "question": "By what percentage did Azure and other cloud services revenue grow in fiscal year 2025, and what were the main cost drivers that impacted the Intelligent Cloud segment's gross margin percentage?",
+      "answer": "Azure and other cloud services revenue grew 34% in fiscal year 2025. The Intelligent Cloud gross margin percentage decreased due to the impact of scaling AI infrastructure, which drove a 36% increase in cost of revenue (from $29.611B to $40.171B), offset in part by efficiency gains in Azure.",
+      "source_pages": [
+        57
+      ],
+      "relevant_chunks_hint": "Intelligent Cloud segment MD&A narrative"
+    },
+    {
+      "id": "Q05",
+      "category": "Balance Sheet",
+      "complexity": "Medium",
+      "question": "What were Microsoft's total assets, total liabilities, and total stockholders' equity as of June 30, 2025 and June 30, 2024?",
+      "answer": "As of June 30, 2025: Total assets $619.003B, total liabilities $275.524B, total stockholders' equity $343.479B. As of June 30, 2024: Total assets $512.163B, total liabilities $243.686B, total stockholders' equity $268.477B. Total assets grew by approximately $106.84 billion (~20.9%) year over year.",
+      "source_pages": [
+        73
+      ],
+      "relevant_chunks_hint": "Balance Sheets (Item 8)"
+    },
+    {
+      "id": "Q06",
+      "category": "Cash and Liquidity",
+      "complexity": "Medium",
+      "question": "What was the total cash, cash equivalents, and short-term investments as of June 30, 2025 and June 30, 2024? How much did cash from operations change in fiscal year 2025?",
+      "answer": "Total cash, cash equivalents, and short-term investments were $94.565 billion as of June 30, 2025 and $75.543 billion as of June 30, 2024. Cash from operations increased by $17.614 billion to $136.162 billion in fiscal year 2025.",
+      "source_pages": [
+        61,
+        74
+      ],
+      "relevant_chunks_hint": "Liquidity and Capital Resources; Cash Flows Statements"
+    },
+    {
+      "id": "Q07",
+      "category": "Capital Expenditures",
+      "complexity": "High",
+      "question": "How much did Microsoft spend on additions to property and equipment in fiscal years 2025, 2024, and 2023? What drove the increase and how did total cash used in investing change?",
+      "answer": "Additions to property and equipment were $64.551B in FY2025, $44.477B in FY2024, and $28.107B in FY2023, driven by investments in cloud and AI infrastructure. Total cash used in investing decreased by $24.4 billion to $72.599 billion in FY2025, primarily because FY2024 included the $69.132 billion Activision Blizzard acquisition.",
+      "source_pages": [
+        61,
+        74
+      ],
+      "relevant_chunks_hint": "Cash Flows Statements; Liquidity and Capital Resources narrative"
+    },
+    {
+      "id": "Q08",
+      "category": "Contractual Obligations",
+      "complexity": "High",
+      "question": "As of June 30, 2025, what were Microsoft's total contractual obligations and how were they distributed across long-term debt principal, interest, construction commitments, lease obligations, and purchase commitments?",
+      "answer": "Total contractual obligations: $397.045B. Long-term debt principal: $3.000B (FY2026) + $46.206B (thereafter); Interest: $1.509B + $25.527B; Construction commitments: $26.859B + $5.290B; Leases: $12.798B + $165.903B; Purchase commitments: $103.940B + $6.013B. Total due FY2026: $148.106B; Thereafter: $248.939B.",
+      "source_pages": [
+        62
+      ],
+      "relevant_chunks_hint": "Material Cash Requirements and Other Obligations table"
+    },
+    {
+      "id": "Q09",
+      "category": "Share Repurchases and Dividends",
+      "complexity": "Medium",
+      "question": "How many shares did Microsoft repurchase in fiscal years 2025 and 2024 and at what total cost? What total dividends were declared and what was the dividend per share in each year?",
+      "answer": "FY2025: Repurchased 31 million shares for $13.0 billion. FY2024: Repurchased 32 million shares for $12.0 billion. Dividends declared: $24.678B ($3.32 per share) in FY2025; $22.295B ($3.00 per share) in FY2024.",
+      "source_pages": [
+        64,
+        75,
+        111
+      ],
+      "relevant_chunks_hint": "Share Repurchases (MD&A); Stockholders' Equity Statements; Note 15"
+    },
+    {
+      "id": "Q10",
+      "category": "Income Taxes",
+      "complexity": "High",
+      "question": "What was Microsoft's effective tax rate in fiscal years 2025 and 2024, and what were the U.S. and foreign components of income before income taxes? Why was the effective rate lower than the U.S. statutory rate?",
+      "answer": "Effective tax rate was 18% in both FY2025 and FY2024. FY2025: U.S. income before taxes $69.212B, foreign $54.415B. FY2024: U.S. $62.886B, foreign $44.901B. The rate was lower than the 21% statutory rate primarily due to earnings taxed at lower rates in foreign jurisdictions via Microsoft's regional operations center in Ireland.",
+      "source_pages": [
+        60,
+        103
+      ],
+      "relevant_chunks_hint": "Income Taxes section of MD&A; Note 11 – Income Taxes"
+    },
+    {
+      "id": "Q11",
+      "category": "IRS Tax Dispute",
+      "complexity": "Medium",
+      "question": "What is the status of Microsoft's IRS tax dispute as of June 30, 2025, including the tax years under audit, the amount of additional tax the IRS is seeking, and Microsoft's position?",
+      "answer": "Microsoft remains under IRS audit for tax years 2014–2017. For tax years 2004–2013, it received Notices of Proposed Adjustment (NOPAs) on September 26, 2023, related to intercompany transfer pricing. The IRS is seeking an additional $28.9 billion plus penalties and interest. Microsoft disagrees and will vigorously contest through the IRS appeals office and, if necessary, judicial proceedings. No final resolution is expected in the next 12 months.",
+      "source_pages": [
+        60,
+        106
+      ],
+      "relevant_chunks_hint": "Income Taxes – Uncertain Tax Positions (MD&A); Note 11"
+    },
+    {
+      "id": "Q12",
+      "category": "Unearned Revenue",
+      "complexity": "Medium",
+      "question": "What was Microsoft's total unearned revenue as of June 30, 2025, how is it expected to be recognized over future quarters, and what is the total remaining performance obligation?",
+      "answer": "Total unearned revenue: $67.265B as of June 30, 2025. Recognition schedule: $25.191B (Q1 FY2026), $19.733B (Q2 FY2026), $13.742B (Q3 FY2026), $5.889B (Q4 FY2026), $2.710B (thereafter). Total remaining performance obligation: $375B ($368B commercial); ~40% expected to be recognized in the next 12 months.",
+      "source_pages": [
+        62,
+        107
+      ],
+      "relevant_chunks_hint": "Unearned Revenue table (Liquidity); Note 12 – Unearned Revenue"
+    },
+    {
+      "id": "Q13",
+      "category": "Acquisitions",
+      "complexity": "High",
+      "question": "What was the total purchase price for the Activision Blizzard acquisition, when was it completed, and how was the purchase price allocated across major asset classes?",
+      "answer": "The Activision Blizzard acquisition was completed October 13, 2023, for $75.408 billion (primarily cash). Allocation: Cash $12.976B, Goodwill $51.001B, Intangible assets $21.969B, Other assets $2.503B, Long-term debt ($2.799B), Long-term income taxes ($1.946B), Deferred income taxes ($4.676B), Other liabilities ($3.620B). Goodwill was assigned to the More Personal Computing segment.",
+      "source_pages": [
+        97
+      ],
+      "relevant_chunks_hint": "Note 7 – Business Combinations"
+    },
+    {
+      "id": "Q14",
+      "category": "Goodwill",
+      "complexity": "Medium",
+      "question": "What was the total goodwill balance as of June 30, 2025 and June 30, 2024, and how was goodwill distributed across Microsoft's three reportable segments?",
+      "answer": "Total goodwill: $119.509B (June 30, 2025) and $119.220B (June 30, 2024). Distribution as of June 30, 2025: Productivity and Business Processes $31.457B, Intelligent Cloud $25.689B, More Personal Computing $62.363B.",
+      "source_pages": [
+        73,
+        98
+      ],
+      "relevant_chunks_hint": "Balance Sheets; Note 8 – Goodwill"
+    },
+    {
+      "id": "Q15",
+      "category": "Long-term Debt",
+      "complexity": "High",
+      "question": "What was Microsoft's total face value of long-term debt as of June 30, 2025 and June 30, 2024? Describe the 2024 debt issuance and identify the longest-maturity debt outstanding.",
+      "answer": "Total face value of long-term debt: $49.206B (June 30, 2025), $51.221B (June 30, 2024). The 2024 issuance totaled $3.344B with maturities from 2026–2050 and stated rates of 1.35%–4.50%. The longest-maturity debt is the 2021 issuance of $8.185B maturing in 2052–2062 at 2.92%–3.04%, followed by a 2020 issuance maturing through 2060.",
+      "source_pages": [
+        101
+      ],
+      "relevant_chunks_hint": "Note 10 – Debt, long-term debt components table"
+    },
+    {
+      "id": "Q16",
+      "category": "Cybersecurity Risk",
+      "complexity": "High",
+      "question": "What nation-state cybersecurity incident did Microsoft disclose in its 10-K, when did it occur, what was the nature of the attack, and what were the consequences?",
+      "answer": "Beginning late November 2023, a nation-state threat actor used a password spray attack to compromise a legacy test account and gained access to Microsoft email accounts. Using that access, the attacker infiltrated some source code repositories and internal systems. Disclosed in Form 8-K filed January 19, 2024 (amended March 8, 2024). The incident has caused, and may continue to cause, reputational harm and damage to customer relationships.",
+      "source_pages": [
+        27
+      ],
+      "relevant_chunks_hint": "Cybersecurity, Data Privacy Risks in Item 1A"
+    },
+    {
+      "id": "Q17",
+      "category": "Cybersecurity Governance",
+      "complexity": "Medium",
+      "question": "What is Microsoft's Secure Future Initiative (SFI), when was it launched, and what are its three core security principles?",
+      "answer": "The Secure Future Initiative (SFI) was launched November 2023 and expanded in scope in May 2024. Its three principles are: (1) Secure by Design – security comes first when designing any product or service; (2) Secure by Default – protections are enabled by default and are not optional; (3) Secure Operations – controls and monitoring will continuously improve.",
+      "source_pages": [
+        44
+      ],
+      "relevant_chunks_hint": "Item 1C – Cybersecurity, Risk Management and Strategy"
+    },
+    {
+      "id": "Q18",
+      "category": "Research and Development",
+      "complexity": "Medium",
+      "question": "What were Microsoft's research and development expenses in fiscal years 2025 and 2024, what percentage of revenue did they represent, and what drove the year-over-year change?",
+      "answer": "R&D expenses: $32.488B in FY2025 (12% of revenue) vs $29.510B in FY2024 (12% of revenue), an increase of $2.978B or 10%. The increase was driven by investments in cloud and AI engineering and Gaming, including the impact of the Activision Blizzard acquisition.",
+      "source_pages": [
+        57,
+        58
+      ],
+      "relevant_chunks_hint": "Operating Expenses – Research and Development section in MD&A"
+    },
+    {
+      "id": "Q19",
+      "category": "Operating Expenses",
+      "complexity": "Medium",
+      "question": "What were Microsoft's sales and marketing and general and administrative expenses in fiscal years 2025 and 2024, and what drove the changes in each?",
+      "answer": "Sales and marketing: $25.654B in FY2025 (9% of revenue) vs $24.456B in FY2024 (10% of revenue), +$1.198B or 5%, driven by commercial sales and Gaming including Activision Blizzard. G&A: $7.223B in FY2025 (3%) vs $7.609B in FY2024 (3%), -$386M or 5%, also driven by Gaming including Activision Blizzard.",
+      "source_pages": [
+        58
+      ],
+      "relevant_chunks_hint": "Operating Expenses – Sales and Marketing; G&A sections in MD&A"
+    },
+    {
+      "id": "Q20",
+      "category": "Market Risk",
+      "complexity": "High",
+      "question": "According to the quantitative market risk sensitivity analysis in the 10-K, what would be the estimated earnings or fair value impact from: a 10% decrease in foreign exchange rates on revenue, a 100bps increase in U.S. treasury rates, and a 10% decrease in equity market prices?",
+      "answer": "As of June 30, 2025 sensitivity analysis: 10% decrease in foreign exchange rates on Revenue → $(11.596)B impact on Earnings; 100bps increase in U.S. treasury rates → $(1.415)B impact on Fair Value; 10% decrease in equity prices → $(1.213)B impact on Earnings.",
+      "source_pages": [
+        70
+      ],
+      "relevant_chunks_hint": "Item 7A – Quantitative and Qualitative Disclosures About Market Risk"
+    },
+    {
+      "id": "Q21",
+      "category": "Leases",
+      "complexity": "High",
+      "question": "What were Microsoft's total operating lease liabilities and total finance lease liabilities as of June 30, 2025? How did total finance lease costs change between fiscal years 2024 and 2025?",
+      "answer": "Operating lease liabilities: $22.861B total ($5.424B current + $17.437B long-term). Finance lease liabilities: $46.172B total ($3.172B current + $43.000B long-term). Total finance lease cost rose from $2.534B in FY2024 to $4.825B in FY2025: amortization increased from $1.800B to $3.408B, and interest from $734M to $1.417B.",
+      "source_pages": [
+        107,
+        108
+      ],
+      "relevant_chunks_hint": "Note 13 – Leases"
+    },
+    {
+      "id": "Q22",
+      "category": "Product Revenue Mix",
+      "complexity": "High",
+      "question": "What were Microsoft's revenues from its top five product and service categories in fiscal year 2025, and how did Gaming revenue change between fiscal years 2023 and 2025?",
+      "answer": "Top 5 in FY2025: Server products and cloud services $98.435B; Microsoft 365 Commercial $87.767B; Gaming $23.455B; LinkedIn $17.812B; Windows and Devices $17.314B. Gaming revenue grew from $15.466B (FY2023) to $21.503B (FY2024) to $23.455B (FY2025), approximately 52% cumulative growth, driven primarily by the Activision Blizzard acquisition.",
+      "source_pages": [
+        119
+      ],
+      "relevant_chunks_hint": "Note 18 – Segment Information, revenue by product table"
+    },
+    {
+      "id": "Q23",
+      "category": "Earnings Per Share",
+      "complexity": "Medium",
+      "question": "What were Microsoft's basic and diluted earnings per share for fiscal years 2025, 2024, and 2023? How did the dilutive effect of stock-based awards change over this period?",
+      "answer": "Basic EPS: $13.70 (FY2025), $11.86 (FY2024), $9.72 (FY2023). Diluted EPS: $13.64 (FY2025), $11.80 (FY2024), $9.68 (FY2023). Dilutive effect (additional weighted-average shares): 32M in FY2025, 38M in FY2024, 26M in FY2023.",
+      "source_pages": [
+        71,
+        88
+      ],
+      "relevant_chunks_hint": "Income Statements (Item 8); Note 2 – Earnings Per Share"
+    },
+    {
+      "id": "Q24",
+      "category": "Properties and Supply Chain",
+      "complexity": "Medium",
+      "question": "How much total real estate does Microsoft own and lease domestically and internationally as of June 30, 2025? What supply chain vulnerability does Microsoft disclose regarding component suppliers?",
+      "answer": "Total: 97M sq ft (57M in U.S.: 34M owned + 23M leased; 40M international: 13M owned + 27M leased; total 47M owned + 50M leased). Supply chain risk: there are few qualified suppliers for certain server and device components (including GPUs). Extended or unforeseen disruptions at these suppliers could impact datacenter operations and device manufacturing timelines.",
+      "source_pages": [
+        16,
+        46
+      ],
+      "relevant_chunks_hint": "Operations section (Item 1); Item 2 – Properties table"
+    },
+    {
+      "id": "Q25",
+      "category": "Legal Contingencies",
+      "complexity": "Medium",
+      "question": "What was the total amount of accrued aggregate legal liabilities as of June 30, 2025, and what is the estimated range of additional adverse outcomes that are reasonably possible beyond recorded amounts?",
+      "answer": "Microsoft accrued aggregate legal liabilities of $541 million as of June 30, 2025. Adverse outcomes beyond recorded amounts estimated at approximately $600 million in aggregate are reasonably possible. Management believes resolving claims will not have a material adverse impact on consolidated financial statements, though outcomes are inherently uncertain.",
+      "source_pages": [
+        110
+      ],
+      "relevant_chunks_hint": "Note 14 – Contingencies, Other Contingencies paragraph"
+    }
+  ]
+}
