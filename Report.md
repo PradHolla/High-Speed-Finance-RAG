@@ -1,6 +1,9 @@
 # FE524 Final Project Report
 ## High Speed Financial Document RAG System
 
+## GitHub Link
+[https://github.com/PradHolla/High-Speed-Finance-RAG](https://github.com/PradHolla/High-Speed-Finance-RAG)
+
 ### Team Members
 1. Pradhyumna Nagaraja Holla (Core Architect and Data Pipeline)
 2. Pallavi Maralla Satish (Prompt Engineering and Generation)
@@ -181,10 +184,3 @@ uv run eval_generation.py --golden-path data/golden_dataset_aditya_25.jsonl --to
 uv run eval_generation.py --golden-path data/golden_dataset_pratheek_25.jsonl --top-k 5 --strategy standard --judge-model zai.glm-5 --judge-temperature 0.0 --judge-max-tokens 1200 --output artifacts/generation_eval_pratheek25_full.json
 ```
 
-## 10. FE524 Requirement Mapping
-1. Group members are listed in Team Members
-2. Business problem and objective are covered in Abstract and Introduction
-3. Documents and data are covered in Section 2
-4. Model output evaluation is covered in Sections 4 and 5
-5. Source code files, data files, and output analysis are covered in Section 7
-6. Brief write up summary is covered in Sections Abstract through 6
