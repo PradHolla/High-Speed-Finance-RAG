@@ -38,23 +38,23 @@ RULES:
 
 EXTRACTION_PROMPT = ChatPromptTemplate.from_messages([
     ("system", """You are a financial extraction engine. Return ONLY valid JSON using this exact schema:
-{
+{{
   "answer": "<string or null>",
   "source_document": "<string or null>",
   "source_pages": "<array of integers or null>",
   "direct_quote": "<string or null>",
   "confidence": "HIGH | MEDIUM | LOW"
-}
+}}
 
 If answer is not found, return:
-{"answer": null, "source_document": null, "source_pages": null, "direct_quote": null, "confidence": "LOW"}"""),
+{{"answer": null, "source_document": null, "source_pages": null, "direct_quote": null, "confidence": "LOW"}}"""),
     ("human", """Context:
 {context}
 
 Query: {query}
 
 Example output:
-{"answer":"$281.724 billion","source_document":"Microsoft 2025 10-K","source_pages":[71],"direct_quote":"Total revenue 281,724","confidence":"HIGH"}"""),
+{{"answer":"$281.724 billion","source_document":"Microsoft 2025 10-K","source_pages":[71],"direct_quote":"Total revenue 281,724","confidence":"HIGH"}}"""),
 ])
 
 COT_COMPARISON_PROMPT = ChatPromptTemplate.from_messages([
